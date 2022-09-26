@@ -16,10 +16,10 @@
                         <div class="content">
                             <div class="truck-show">
                                 <div class="line"><small>category: </small>
-                                    <h5>{{$items->category}}</h5>
+                                    <h5>{{$items->getCategory->category}}</h5>
                                 </div>
                                 <div class="line"><small>sub_category: </small>
-                                    <h5>{{$items->sub_category}}</h5>
+                                    <h5>{{$items->getSubCategory->sub_category}}</h5>
                                 </div>
                                 <div class="line"><small>title: </small>
                                     <h5>{{$items->title}}</h5>

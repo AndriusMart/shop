@@ -18,7 +18,13 @@ class ItemsController extends Controller
     public function index()
     {
         $items = Items::all();
-        return view('item.index', ['items' => $items]);
+        $subCategories = SubCategory::all();
+        $categories = Category::all();
+        return view('item.index', [
+            'items' => $items,
+            'subCategories' => $subCategories,
+            'categories' => $categories,
+        ]);
     }
 
     /**
@@ -89,9 +95,12 @@ class ItemsController extends Controller
      */
     public function edit(Items $items)
     {
-        $mechanics = Items::all();
+        $subCategories = SubCategory::all();
+        $categories = Category::all();
         return view('item.edit', [
             'items' => $items,
+            'subCategories' => $subCategories,
+            'categories' => $categories,
         ]);
     }
 
@@ -104,8 +113,8 @@ class ItemsController extends Controller
      */
     public function update(Request $request, Items $items)
     {
-        $items->category = $request->category;
-        $items->sub_category = $request->sub_category;
+        $items->category_id = $request->category_id;
+        $items->sub_category_id = $request->sub_category_id;
         $items->title = $request->title;
         $items->about = $request->about;
         $items->price = $request->price;
@@ -127,9 +136,6 @@ class ItemsController extends Controller
             $photo->move(public_path().'/item', $file);
             $items->photo = asset('/item') . '/' . $file;
         }
-
-
-
 
         $items->save();
         return redirect()->route('i_index');

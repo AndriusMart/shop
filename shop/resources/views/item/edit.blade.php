@@ -10,16 +10,21 @@
                 </div>
                 <div class="card-body">
                     <form action="{{route('i_update', $items )}}" method="post" enctype="multipart/form-data">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">Category</span>
-                            <input type="text" name="category" class="form-control"
-                                value="{{old('category', $items->category)}}">
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">sub_category</span>
-                            <input type="text" name="sub_category" class="form-control"
-                                value="{{old('sub_category' , $items->sub_category)}}">
-                        </div>
+                        <select name="category_id" class="form-select mt-3">
+
+                            @foreach($categories as $category)
+                            <option value="{{$category->id}}" @if($category->id == old('category', $items->category_id)) selected
+                                @endif>{{$category->category}}</option>
+                            @endforeach
+                        </select>
+                        <select name="sub_category_id" class="form-select mt-3 mb-3">
+
+                            @foreach($subCategories as $subCategory)
+                            <option value="{{$subCategory->id}}" @if($subCategory->id == old('sub_category',  $items->sub_category_id))
+                                selected
+                                @endif>{{$subCategory->sub_category}}</option>
+                            @endforeach
+                        </select>
                         <div class="input-group mb-3">
                             <span class="input-group-text">title</span>
                             <input type="text" name="title" class="form-control"

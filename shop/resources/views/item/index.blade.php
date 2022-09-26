@@ -53,8 +53,8 @@
                         <li class="list-group-item">
                             <div class="trucks-list">
                                 <div class="content">
-                                    <h2><span>category: </span>{{$item->category}}</h2>
-                                    <h4><span>sub_category: </span>{{$item->sub_category}}</h4>
+                                    <h2><span>category: </span>{{$item->getCategory->category}}</h2>
+                                    <h4><span>sub_category: </span>{{$item->getSubCategory->sub_category}}</h4>
                                     <h4><span>title: </span>{{$item->title}}</h4>
                                     @if($item->photo)
                                     <h5><a href="{{$item->photo}}" target="_BLANK">Photo</a></h5>
