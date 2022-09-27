@@ -156,4 +156,14 @@ class ItemsController extends Controller
         $items->delete();
         return redirect()->route('i_index');
     }
+
+
+    public function subcategoryList(int $categoryId)
+    {
+        $subCategories = SubCategory::where('category_id', $categoryId)->orderBy('sub_category')->get();
+        $html = view('item.subcategory_list')->with('subCategories', $subCategories)->render();
+        return response()->json([
+            'html' => $html,
+        ]);
+    }
 }

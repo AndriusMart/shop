@@ -35,6 +35,7 @@ Route::prefix('items')->name('i_')->group(function () {
     Route::delete('/delete/{items}', [I::class, 'destroy'])->name('delete');
     Route::get('/edit/{items}', [I::class, 'edit'])->name('edit');
     Route::put('/edit/{items}', [I::class, 'update'])->name('update');
+    Route::get('/subcategory-list/{category_id}', [I::class, 'subcategoryList']);
 });
 
 Route::prefix('category')->name('c_')->group(function () {

@@ -38,6 +38,7 @@ class SubCategoryController extends Controller
     {
         $subCategory = new SubCategory;
         $subCategory->sub_category = $request->sub_category;
+        $subCategory->category_id = $request->category_id;
         $subCategory->save();
         return redirect()->route('i_create');
     }

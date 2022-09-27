@@ -23,11 +23,11 @@ class PageController extends Controller
     public function list()
     {
         $items = Items::paginate(9)->withQueryString();
-        $subCategories = SubCategory::all();
+
         $categories = Category::all();
         return view('main.list', [
             'items' => $items,
-            'subCategories' => $subCategories,
+
             'categories' => $categories,
         ]);
     }

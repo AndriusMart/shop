@@ -23,13 +23,17 @@
         </button>
         
         <div class="collapse" id="{{$category->category}}-collapse" style="">
-          @forelse($subCategories as $subCategory)
+          @forelse($category->subCategories as $subcategory)
+          
 
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li><a href="#"
-                class="link-dark d-inline-flex text-decoration-none rounded">{{$subCategory->sub_category}}</a>
+                class="link-dark d-inline-flex text-decoration-none rounded">{{$subcategory->sub_category}}</a>
             </li>
           </ul>
+
+
+          
 
           @empty
           <h1 class="list-group-item">No items found</h1>
@@ -41,49 +45,7 @@
       <h1 class="list-group-item">No items found</h1>
       @endforelse
 
-      <li class="cat-list">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-          data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-          Woman
-        </button>
-        <div class="collapse" id="dashboard-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Dress</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Skirts</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Socks</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Boots</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Ascessories</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="cat-list">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-          data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-          Child
-        </button>
-        <div class="collapse" id="orders-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Pants</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">T-shirts</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Socks</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Hoodie</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Ascessories</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="border-top my-1"></li>
-      <li class="cat-list">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-          data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-          Bed
-        </button>
-        <div class="collapse" id="account-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Pillow</a></li>
-            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Sheets</a></li>
-          </ul>
-        </div>
-      </li>
+      
     </ul>
     <div>filter</div>
   </div>
