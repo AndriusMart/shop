@@ -35,5 +35,12 @@ app.component('example-component', ExampleComponent);
  * an "id" attribute of "app". This element is included with the "auth"
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
+/*services */
+import { services } from '../js/components/services.js';
+import { servicesData } from '../js/data/servicesData.js';
+
+services('#services_block', servicesData);
+/*services */
+
 
 app.mount('#app');

@@ -18,4 +18,7 @@ class Items extends Model
     {
         return $this->belongsTo(SubCategory::class,'sub_category_id', 'id');
     }
+
+
+
 }

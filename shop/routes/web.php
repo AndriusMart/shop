@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemsController as I;
 use App\Http\Controllers\SubCategoryController as SC;
 use App\Http\Controllers\CategoryController as C;
+use App\Http\Controllers\PageController as P;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +19,10 @@ use App\Http\Controllers\CategoryController as C;
 */
 
 Route::get('/', function () {
-    return view('admin.index');
+    return view('main.index');
 });
 
-Auth::routes(['register' => false]);
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -53,4 +55,13 @@ Route::prefix('subCategory')->name('subc_')->group(function () {
     Route::delete('/delete/{items}', [SC::class, 'destroy'])->name('delete');
     Route::get('/edit/{items}', [SC::class, 'edit'])->name('edit');
     Route::put('/edit/{items}', [SC::class, 'update'])->name('update');
+});
+
+Route::prefix('main')->name('m_')->group(function () {
+    Route::get('/', [P::class, 'index'])->name('index');
+    Route::get('/list', [P::class, 'list'])->name('list');
+    Route::get('/create', [P::class, 'create'])->name('create');
+    Route::post('/create', [P::class, 'store'])->name('store');
+    Route::get('/show/{items}', [P::class, 'show'])->name('show');
+
 });
