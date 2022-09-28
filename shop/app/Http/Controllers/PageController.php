@@ -31,4 +31,15 @@ class PageController extends Controller
             'categories' => $categories,
         ]);
     }
+
+    public function show(Items $items)
+    {
+        return view('main.show', ['items' => $items]);
+    }
+
+ 
+
+
+
+
 }

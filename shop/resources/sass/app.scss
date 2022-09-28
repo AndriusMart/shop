@@ -31,7 +31,6 @@ body {
     background-color: var(--bg-color);
 }
 
-
 .bg-header{
     background-color: #eed7e5;
     border-bottom: black 1px solid;
@@ -597,4 +596,9 @@ body {
     display: flex;
     justify-content: center;
     
+}
+
+.header-back{
+    display: flex;
+    justify-content: space-between;
 }

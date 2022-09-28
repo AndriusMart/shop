@@ -66,7 +66,7 @@
               <h2>{{$item->price}}</h2>
             </div>
             <div class="buy-see overlay">
-              <a href="#">buy now</a>
+              <a href="{{route('m_show', $item)}}">buy now</a>
             </div>
           </div>
 
