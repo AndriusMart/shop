@@ -84,24 +84,47 @@
             @endif
             @else
             <li class="nav-item dropdown">
-              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false" v-pre>
-                Items
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  Items
               </a>
 
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('i_index') }}">
-                  List
-                </a>
-                <a class="dropdown-item" href="{{ route('i_create') }}">
-                  Add new
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                  @csrf
-                </form>
+                  <a class="dropdown-item" href="{{ route('i_index') }}">
+                      List
+                  </a>
+                  <a class="dropdown-item" href="{{ route('i_create') }}">
+                      Add new
+                  </a>
               </div>
-            </li>
+          </li>
+          <li class="nav-item dropdown">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  SubCategories
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('subc_index') }}">
+                      List
+                  </a>
+                  <a class="dropdown-item" href="{{ route('subc_create') }}">
+                      Add new
+                  </a>
+              </div>
+          </li>
+          <li class="nav-item dropdown">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  Categories
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('c_index') }}">
+                      List
+                  </a>
+                  <a class="dropdown-item" href="{{ route('c_create') }}">
+                      Add new
+                  </a>
+              </div>
+          </li>
             <li class="nav-item dropdown">
               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false" v-pre>
