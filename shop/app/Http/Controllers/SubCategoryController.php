@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
@@ -15,7 +15,9 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('subCategory.index', [
+            'subCategories' => SubCategory::orderBy('updated_at', 'desc')->get(),
+        ]);
     }
 
     /**
@@ -25,7 +27,9 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('subCategory.create',[
+            'subCategories' => SubCategory::orderBy('updated_at', 'desc')->get(),
+        ]);
     }
 
     /**
@@ -40,7 +44,7 @@ class SubCategoryController extends Controller
         $subCategory->sub_category = $request->sub_category;
         $subCategory->category_id = $request->category_id;
         $subCategory->save();
-        return redirect()->route('i_create');
+        return redirect()->route('subc_create');
     }
 
     /**
@@ -51,7 +55,9 @@ class SubCategoryController extends Controller
      */
     public function show(SubCategory $subCategory)
     {
-        //
+        return view('subCategory.show', [
+            'subCategory' => $subCategory,
+        ]);
     }
 
     /**
@@ -62,7 +68,11 @@ class SubCategoryController extends Controller
      */
     public function edit(SubCategory $subCategory)
     {
-        //
+        return view('subCategory.edit', [
+            'subCategory' => $subCategory,
+            'categories' => Category::orderBy('updated_at', 'desc')->get(),
+            
+        ]);
     }
 
     /**
@@ -74,7 +84,10 @@ class SubCategoryController extends Controller
      */
     public function update(Request $request, SubCategory $subCategory)
     {
-        //
+        $subCategory->sub_category = $request->sub_category;
+        $subCategory->category_id = $request->category_id;
+        $subCategory->save();
+        return redirect()->route('subc_index');
     }
 
     /**
@@ -85,6 +98,10 @@ class SubCategoryController extends Controller
      */
     public function destroy(SubCategory $subCategory)
     {
-        //
+        if($subCategory->items()->count()){
+            return 'Negalima.';
+        }
+        $subCategory->delete();
+        return redirect()->route('subc_index');
     }
 }

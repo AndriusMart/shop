@@ -42,20 +42,20 @@ Route::prefix('category')->name('c_')->group(function () {
     Route::get('/', [C::class, 'index'])->name('index');
     Route::get('/create', [C::class, 'create'])->name('create');
     Route::post('/create', [C::class, 'store'])->name('store');
-    Route::get('/show/{items}', [C::class, 'show'])->name('show');
-    Route::delete('/delete/{items}', [C::class, 'destroy'])->name('delete');
-    Route::get('/edit/{items}', [C::class, 'edit'])->name('edit');
-    Route::put('/edit/{items}', [C::class, 'update'])->name('update');
+    Route::get('/show/{category}', [C::class, 'show'])->name('show');
+    Route::delete('/delete/{category}', [C::class, 'destroy'])->name('delete');
+    Route::get('/edit/{category}', [C::class, 'edit'])->name('edit');
+    Route::put('/edit/{category}', [C::class, 'update'])->name('update');
 });
 
 Route::prefix('subCategory')->name('subc_')->group(function () {
     Route::get('/', [SC::class, 'index'])->name('index');
     Route::get('/create', [SC::class, 'create'])->name('create');
     Route::post('/create', [SC::class, 'store'])->name('store');
-    Route::get('/show/{items}', [SC::class, 'show'])->name('show');
-    Route::delete('/delete/{items}', [SC::class, 'destroy'])->name('delete');
-    Route::get('/edit/{items}', [SC::class, 'edit'])->name('edit');
-    Route::put('/edit/{items}', [SC::class, 'update'])->name('update');
+    Route::get('/show/{subCategory}', [SC::class, 'show'])->name('show');
+    Route::delete('/delete/{subCategory}', [SC::class, 'destroy'])->name('delete');
+    Route::get('/edit/{subCategory}', [SC::class, 'edit'])->name('edit');
+    Route::put('/edit/{subCategory}', [SC::class, 'update'])->name('update');
 });
 
 Route::prefix('main')->name('m_')->group(function () {

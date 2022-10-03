@@ -51,7 +51,7 @@
                     <ul class="list-group">
                         @forelse($items as $item)
                         <li class="list-group-item">
-                            <div class="trucks-list">
+                            <div class="items-list">
                                 <div class="content">
                                     <h2><span>category: </span>{{$item->getCategory->category}}</h2>
                                     <h4><span>sub_category: </span>{{$item->getSubCategory->sub_category}}</h4>
