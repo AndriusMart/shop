@@ -2,17 +2,7 @@
 
 import './bootstrap';
 import axios from "axios";
-import { Modal } from 'bootstrap';
 
-
-
-
-
-
-import { services } from '../js/components/services.js';
-import { servicesData } from '../js/data/servicesData.js';
-
-services('#services_block', servicesData);
 
 const breakdown = document.querySelector("#breakdown");
 if (breakdown) {

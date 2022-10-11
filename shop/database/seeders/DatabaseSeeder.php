@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Faker\Factory as F;
 
@@ -18,37 +19,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $time = Carbon::now();
         DB::table('users')->insert([
             'name' => 'Bebras',
             'email' => 'bebras@gmail.com',
             'password' => Hash::make('123'),
+            'created_at' => $time,
+            'updated_at' => $time,
+            'role' => 1,
         ]);
         DB::table('users')->insert([
             'name' => 'Briedis',
             'email' => 'briedis@gmail.com',
             'password' => Hash::make('123'),
+            'created_at' => $time,
+            'updated_at' => $time,
+            'role' => 10,
         ]);
-        $mc = 20;
-        $faker = F::create('lt_LT');
-        foreach(range(1,20) as $_){
-            DB::table('mechanics')->insert([
-                'name' => $faker->firstName(),
-                'surname' => $faker->lastName(),
-            ]);
-        }
-        $makers = ['MB', 'Volvo', 'Scania', 'Kamaz', 'Avia', 'DAF', 'Iveco', 'MAN', 'Ford', 'Mack', 'Tesla'];
-
-
-        foreach(range(1,223) as $_){
-            DB::table('trucks')->insert([
-                'maker' => $makers[rand(0, count($makers)-1)],
-                'plate' => strtoupper(Str::random(3))  . '-' . rand(100, 999),
-                'make_year' => rand(1960, 2022),
-                'mechanic_notices' => $faker->paragraph(rand(1,10)),
-                'mechanic_id' => rand(1, $mc),
-            ]);
-        }
-
-
+        
     }
 }

@@ -28,7 +28,7 @@ class SubCategoryController extends Controller
     public function create()
     {
         return view('subCategory.create',[
-            'subCategories' => SubCategory::orderBy('updated_at', 'desc')->get(),
+            'categories' => Category::orderBy('updated_at', 'desc')->get(),
         ]);
     }
 
@@ -44,7 +44,7 @@ class SubCategoryController extends Controller
         $subCategory->sub_category = $request->sub_category;
         $subCategory->category_id = $request->category_id;
         $subCategory->save();
-        return redirect()->route('subc_create');
+        return redirect()->route('i_create');
     }
 
     /**

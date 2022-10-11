@@ -9,7 +9,7 @@
                     <h2>New SubCategory</h2>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('subc_store')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('subc_store')}}" method="post" >
                         <div class="input-group mb-3">
                             <span class="input-group-text">Sub category</span>
                             <input type="text" name="sub_category" class="form-control" value="{{old('sub_category')}}">

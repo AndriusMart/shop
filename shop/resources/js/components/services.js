@@ -71,4 +71,4 @@ function isValidServiceItem(data) {
   return true;
 }
 
-export { services };
+

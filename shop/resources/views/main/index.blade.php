@@ -17,7 +17,7 @@
   <div class="section-space-small"></div>
   <!-- new items -->
   <div class="container text-center my-3 carousel-padding">
-    <h2 class="title">Naujos prekės</h2>
+    <h2 class="title">New Items!</h2>
     <div class="row mx-auto my-auto justify-content-center">
       <div id="newCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner" role="listbox">
@@ -35,7 +35,7 @@
                   <h2>{{$item->price}}</h2>
                 </div>
                 <div class="buy-see overlay">
-                  <a href="{{route('m_show', $item)}}">buy now</a>
+                  <a href="{{route('show', $item)}}">buy now</a>
                 </div>
               </div>
             </div>
@@ -57,7 +57,7 @@
   <div class="section-space"></div>
   <!-- popular items -->
   <div class="container text-center my-3 carousel-padding">
-    <h2 class="title">Naujos prekės</h2>
+    <h2 class="title">Most Rated!</h2>
     <div class="row mx-auto my-auto justify-content-center">
       <div id="popularCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner" role="listbox">
@@ -75,7 +75,7 @@
                   <h2>{{$item->price}}</h2>
                 </div>
                 <div class="buy-see overlay">
-                  <a href="{{route('m_show', $item)}}">buy now</a>
+                  <a href="{{route('show', $item)}}">buy now</a>
                 </div>
               </div>
             </div>
@@ -100,9 +100,9 @@
   <!-- register info -->
   <section class="hero new">
     <div class="new-info ">
-      <h2>Naujiena!</h2>
-      <h4>Registruoti kientai gauna 5% nuolaidą</h4>
-      <a href="#"><i class="fa fa-arrow-right" aria-hidden="true"></i>Registruokis dabar!<i class="fa fa-arrow-left"
+      <h2>Important!</h2>
+      <h4>You have to be registered to make an order</h4>
+      <a href="#"><i class="fa fa-arrow-right" aria-hidden="true"></i>Register now!<i class="fa fa-arrow-left"
           aria-hidden="true"></i></a>
     </div>
 
@@ -114,18 +114,18 @@
   <!-- footer -->
   <section class="footer">
     <div class="footer-links">
-      <a href="#">Privatumo Politika</a>
-      <a href="#">Pristatymas ir grąžinimas</a>
-      <a href="#">Parduotuvė</a>
-      <a href="#">Moterims</a>
-      <a href="#">Vyrams</a>
+      <a href="#">Privacy policy</a>
+      <a href="#">Shipping and returning</a>
+      <a href="#">Shop</a>
+      <a href="#">Woman</a>
+      <a href="#">Man</a>
     </div>
     <div class="footer-info">
       <div class="footer-info-each">
         <a href="#">
           <div class="footer-f">
             <i class="fa fa-map-marker" aria-hidden="true"></i>
-            <p>Adresas:</p>
+            <p>Adress:</p>
           </div>
           <span>Samsasas g. 855, Vilnius</span>
         </a>
@@ -135,7 +135,7 @@
         <a href="#">
           <div class="footer-f">
             <i class="fa fa-phone" aria-hidden="true"></i>
-            <p>Telefonas:</p>
+            <p>Phone:</p>
           </div>
           <span>+306555655655</span>
         </a>
@@ -156,5 +156,7 @@
   <!-- footer -->
   <a class="fa fa-angle-up back-to-top" href="#"></a>
   <!-- js -->
+  <script src="http://localhost/shop/shop/resources/js/components/services.js"></script>
+  <script src="http://localhost/shop/shop/resources/js/data/servicesData.js"></script>
 </body>
 @endsection

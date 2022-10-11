@@ -37,6 +37,14 @@
                                 @endif
                             </div>
                         </div>
+                        <div>
+                            <input type="hidden" value="{{ $items->id }}" name="id">
+                            <input type="hidden" value="{{ $items->title}}" name="name">
+                            <input type="hidden" value="{{ $items->photo }}"  name="image">
+                            <input type="hidden" value="{{$items->price}}"  name="price">
+                            <input type="hidden" value="1" name="quantity">
+                            <p class="btn-holder"><a href="{{ route('add.to.cart', $items->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p> 
+                        </div>
                     </div>
                 </div>
             </div>

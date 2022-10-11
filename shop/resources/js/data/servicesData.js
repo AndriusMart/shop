@@ -51,4 +51,3 @@ const servicesData = [
     },
 ];
 
-export { servicesData };

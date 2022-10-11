@@ -8,7 +8,7 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ config('app.name', 'Laravel') }}</title>
+  <title>E-shop</title>
 
   <!-- Fonts -->
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,6 +18,10 @@
   <title>e-shop</title>
 
   <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
   @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
@@ -25,7 +29,7 @@
   <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light bg-header sticky-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{{route('m_index')}}">
+        <a class="navbar-brand" href="{{route('index')}}">
           <img src="../public/item/bg.jpeg" alt="Logo" width="30" class="d-inline-block align-text-top" />
           E-shop
         </a>
@@ -36,27 +40,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="{{route('index')}}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="{{route('m_list')}}">All items</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Categories
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Elektronika</a></li>
-
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
+              <a class="nav-link active" href="{{route('list')}}">All items</a>
             </li>
           </ul>
           <form class="d-flex" role="search">
@@ -64,7 +51,10 @@
             <button class="btn btn-dark" type="submit">Search</button>
           </form>
           <div class="header-icons">
-            <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true">(0)</i></a>
+            <a href="{{ route('cart') }}" class="btn btn-primary btn-block"><i class="fa fa-shopping-cart"
+                aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array)
+                session('cart')) }}</span></a>
+
             <a href="#"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>
           </div>
           <ul class="navbar-nav ms-auto">
@@ -83,48 +73,58 @@
             </li>
             @endif
             @else
+            @if(Auth::user()->role >=10)
+
             <li class="nav-item dropdown">
-              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                  Items
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" v-pre>
+                Items
               </a>
 
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ route('i_index') }}">
-                      List
-                  </a>
-                  <a class="dropdown-item" href="{{ route('i_create') }}">
-                      Add new
-                  </a>
+                <a class="dropdown-item" href="{{ route('i_index') }}">
+                  List
+                </a>
+                <a class="dropdown-item" href="{{ route('i_create') }}">
+                  Add new
+                </a>
               </div>
-          </li>
-          <li class="nav-item dropdown">
-              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                  SubCategories
+            </li>
+            <li class="nav-item dropdown">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" v-pre>
+                SubCategories
               </a>
 
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ route('subc_index') }}">
-                      List
-                  </a>
-                  <a class="dropdown-item" href="{{ route('subc_create') }}">
-                      Add new
-                  </a>
+                <a class="dropdown-item" href="{{ route('subc_index') }}">
+                  List
+                </a>
+                <a class="dropdown-item" href="{{ route('subc_create') }}">
+                  Add new
+                </a>
               </div>
-          </li>
-          <li class="nav-item dropdown">
-              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                  Categories
+            </li>
+            <li class="nav-item dropdown">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" v-pre>
+                Categories
               </a>
 
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ route('c_index') }}">
-                      List
-                  </a>
-                  <a class="dropdown-item" href="{{ route('c_create') }}">
-                      Add new
-                  </a>
+                <a class="dropdown-item" href="{{ route('c_index') }}">
+                  List
+                </a>
+                <a class="dropdown-item" href="{{ route('c_create') }}">
+                  Add new
+                </a>
               </div>
-          </li>
+            </li>
+
+
+
+            @endif
+
             <li class="nav-item dropdown">
               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false" v-pre>
@@ -149,13 +149,19 @@
 
     </nav>
 
+  </div>
+  <div>
 
-    <main>
-      @yield('content')
-    </main>
+    @if(session('success'))
+    <div class="alert alert-success">
+      {{ session('success') }}
+    </div>
+    @endif
+
+    @yield('content')
   </div>
 
-
+  @yield('scripts')
 </body>
 
 </html>
