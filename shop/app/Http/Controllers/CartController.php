@@ -69,4 +69,12 @@ class CartController extends Controller
             session()->flash('success', 'Product removed successfully');
         }
     }
+    public function numb(){
+        $cart = session()->get('cart');
+        $number = 0;
+       foreach ($cart as $cart->quantity) {
+        $number = $number+$cart->quantity;
+       }
+       return $number;
+    }
 }

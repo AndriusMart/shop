@@ -50,13 +50,24 @@
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
             <button class="btn btn-dark" type="submit">Search</button>
           </form>
-          <div class="header-icons">
+          @if(session('cart') == null){
             <a href="{{ route('cart') }}" class="btn btn-primary btn-block"><i class="fa fa-shopping-cart"
-                aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array)
-                session('cart')) }}</span></a>
-
+              aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">0</span></a>
+          <a href="#"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>
+        </div>
+          }
+          @else
+          <div class="header-icons">
+            @php $totals = 0 @endphp
+                @foreach(session('cart') as $id => $details)
+                @php $totals += $details['quantity'];
+                @endphp
+                 @endforeach
+            <a href="{{ route('cart') }}" class="btn btn-primary btn-block"><i class="fa fa-shopping-cart"
+                aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ $totals }}</span></a>
             <a href="#"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>
           </div>
+          @endif
           <ul class="navbar-nav ms-auto">
 
             <!-- Authentication Links -->
