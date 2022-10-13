@@ -20,15 +20,29 @@ class PageController extends Controller
         ]);
     }
 
-    public function list()
+    public function list(Request $request)
     {
         $items = Items::paginate(9)->withQueryString();
-
+        $subCategories = SubCategory::all();
         $categories = Category::all();
+
+
+        if($request->sort == 'price_asc'){
+            $items= Items::orderBy('price', 'asc')->paginate(9)->withQueryString();
+        }
+        else if($request->sort == 'price_desc'){
+            $items= Items::orderBy('price', 'desc')->paginate(9)->withQueryString();
+        }
+
+
+
+        
         return view('main.list', [
             'items' => $items,
-
+            'subCategories' => $subCategories,
             'categories' => $categories,
+            'sort' => $request->sort ?? '0',
+            'sortSelect' => Items::SORT_SELECT,
         ]);
     }
 

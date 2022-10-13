@@ -35,7 +35,13 @@
                   <h2>{{$item->price}}</h2>
                 </div>
                 <div class="buy-see overlay">
-                  <a href="{{route('show', $item)}}">buy now</a>
+                  <input type="hidden" value="{{ $item->id }}" name="id">
+                  <input type="hidden" value="{{ $item->title}}" name="name">
+                  <input type="hidden" value="{{ $item->photo }}"  name="image">
+                  <input type="hidden" value="{{$item->price}}"  name="price">
+                  <input type="hidden" value="1" name="quantity">
+                  <p class="btn-holder"><a href="{{ route('add.to.cart', $item->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p> 
+                  <p class="btn-holder"><a href="{{route('show', $item)}}" class="btn btn-warning btn-block text-center" role="button">Info</a> </p> 
                 </div>
               </div>
             </div>
@@ -75,7 +81,13 @@
                   <h2>{{$item->price}}</h2>
                 </div>
                 <div class="buy-see overlay">
-                  <a href="{{route('show', $item)}}">buy now</a>
+                  <input type="hidden" value="{{ $item->id }}" name="id">
+                  <input type="hidden" value="{{ $item->title}}" name="name">
+                  <input type="hidden" value="{{ $item->photo }}"  name="image">
+                  <input type="hidden" value="{{$item->price}}"  name="price">
+                  <input type="hidden" value="1" name="quantity">
+                  <p class="btn-holder"><a href="{{ route('add.to.cart', $item->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p> 
+                  <p class="btn-holder"><a href="{{route('show', $item)}}" class="btn btn-warning btn-block text-center" role="button">Info</a> </p> 
                 </div>
               </div>
             </div>

@@ -2,4 +2,4 @@
     @foreach($subCategories as $subCategory)
     <option value="{{$subCategory->id}}" >{{$subCategory->sub_category}}</option>
     @endforeach
-</select>
+</select> 

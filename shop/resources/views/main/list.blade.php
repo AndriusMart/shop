@@ -31,10 +31,6 @@
                 class="link-dark d-inline-flex text-decoration-none rounded">{{$subcategory->sub_category}}</a>
             </li>
           </ul>
-
-
-          
-
           @empty
           <h1 class="list-group-item">No items found</h1>
           @endforelse
@@ -47,7 +43,37 @@
 
       
     </ul>
-    <div>filter</div>
+    <div class="container">
+      <div class="row">
+          <div class="col-7">
+              <form action="{{route('list')}}" method="get">
+                  <div class="container">
+                      <div class="row">
+                          {{-- <div class="col-5">
+                              <select name="cat" class="form-select mt-1">
+                                  <option value="0">All</option>
+                                  @foreach($categories as $category)
+                                  <option value="{{$category->id}}" @if($cat==$category->id) selected @endif>{{$category->title}}</option>
+                                  @endforeach
+                              </select>
+                          </div> --}}
+
+                              <select name="sort" class="form-select">
+                                  <option value="0">All</option>
+                                  @foreach($sortSelect as $option)
+                                  <option value="{{$option[0]}}" @if($sort==$option[0]) selected @endif>{{$option[1]}}</option>
+                                  @endforeach
+                              </select>
+
+                          <div class="col-2">
+                              <button type="submit" class="input-group-text mt-1">Filter</button>
+                          </div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
   </div>
   <!-- list items -->
   <div class="col-9 bg-foto">

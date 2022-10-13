@@ -19,6 +19,9 @@ class Items extends Model
         return $this->belongsTo(SubCategory::class,'sub_category_id', 'id');
     }
 
-
+    const SORT_SELECT = [
+        ['price_asc', 'Price 1-9'],
+        ['price_desc', 'Price 9-1'],
+    ];
 
 }
