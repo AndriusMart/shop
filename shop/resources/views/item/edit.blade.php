@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-5">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">
                     <h2>Update item</h2>

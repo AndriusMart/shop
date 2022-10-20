@@ -6,6 +6,7 @@ use App\Http\Controllers\SubCategoryController as SC;
 use App\Http\Controllers\CategoryController as C;
 use App\Http\Controllers\PageController as P;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\Admin\DashboardController as A;
 
 
 /*
@@ -71,3 +72,7 @@ Route::get('cart', [CartController::class, 'cart'])->name('cart');
 Route::get('add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add.to.cart');
 Route::patch('update-cart', [CartController::class, 'update'])->name('update.cart');
 Route::delete('remove-from-cart', [CartController::class, 'remove'])->name('remove.from.cart');
+
+Route::prefix('admin')->name('a_')->group(function () {
+    Route::get('dashboard', [A::class, 'index'])->name('index')->middleware('gate:admin');
+});

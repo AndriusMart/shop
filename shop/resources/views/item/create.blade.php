@@ -1,9 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+<script>
+    const breakdownUrl = "{{route('i_index')}}";
+</script>
 
+<!-- Scripts -->
 @section('content')
 <div id="breakdown" class="container">
-    <div class="row ">
-        <div class="col-7">
+    <div class="row collumn">
+        <div class="create-size">
             <div class="card">
                 <div class="card-header">
                     <h2>New Item</h2>
@@ -41,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="create-cat-size">
 
 
             <div>

@@ -1,9 +1,8 @@
-@extends('layouts.app')
-
+@extends('layouts.admin')
 @section('content')
 <div class="container --content">
     <div class="row justify-content-center">
-        <div class="col-9">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">
                     <h2>SubCategories</h2>
@@ -12,7 +11,7 @@
                     <ul class="list-group">
                         @forelse($subCategories as $subCategory)
                         <li class="list-group-item">
-                            <div class="categories-list">
+                            <div class="items-list">
                                 <div class="content">
                                     <h2>{{$subCategory->sub_category}}</h2>
                                     <small>[Items: {{$subCategory->items()->count()}}]</small>
