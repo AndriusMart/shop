@@ -1,7 +1,4 @@
 @extends('layouts.admin')
-<script>
-    const breakdownUrl = "{{route('i_index')}}";
-</script>
 
 <!-- Scripts -->
 @section('content')

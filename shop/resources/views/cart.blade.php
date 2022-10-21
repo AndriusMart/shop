@@ -36,7 +36,7 @@
                     </td>
                 </tr>
             @endforeach
-        @endif
+        
     </tbody>
     <tfoot>
         <tr>
@@ -45,10 +45,37 @@
         <tr>
             <td colspan="5" class="text-right">
                 <a href="{{route('index')}}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
-                <button class="btn btn-success">Checkout</button>
+                @if(Auth::user())
+                <form action="{{route('o_store')}}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
+                    <?php dump( session('cart') )  ?>
+                    <input type="hidden" value="{{$status[1]}}" name="status">
+                    @foreach(session('cart') as $id => $details)
+                    <?php dump( $id )  ?>
+                    <input type="hidden" value="{{ $id }}" name="item_id">
+                    @endforeach
+                    <input type="hidden" value="{{ $total }}" name="total">
+                    @csrf
+                    <button type="submit" class="btn btn-secondary mt-4">Order</button>
+               </form>
+               @else
+                  <div>
+                    You have to login fist to make an order
+
+
+                      <a class="btn btn-dark" href="{{ route('login') }}">{{ __('Login') }}</a>
+
+
+
+                      <a class="btn btn-dark" href="{{ route('register') }}">{{ __('Register') }}</a>
+
+
+                  </div>
+               @endif
             </td>
         </tr>
     </tfoot>
+    @endif
 </table>
 @endsection
    

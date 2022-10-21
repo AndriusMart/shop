@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Orders;
 use Illuminate\Http\Request;
 use App\Models\Items;
 
@@ -9,7 +9,9 @@ class CartController extends Controller
 {
     public function cart()
     {
-        return view('cart');
+        return view('cart', [
+            'status' => Orders::STATUS 
+        ]);
     }
    
     /**

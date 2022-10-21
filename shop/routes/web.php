@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController as C;
 use App\Http\Controllers\PageController as P;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Admin\DashboardController as A;
+use App\Http\Controllers\OrdersController as O;
 
 
 /*
@@ -75,4 +76,13 @@ Route::delete('remove-from-cart', [CartController::class, 'remove'])->name('remo
 
 Route::prefix('admin')->name('a_')->group(function () {
     Route::get('dashboard', [A::class, 'index'])->name('index')->middleware('gate:admin');
+});
+
+
+Route::prefix('order')->name('o_')->group(function () {
+    Route::get('/', [O::class, 'index'])->name('index')->middleware('gate:user');
+    Route::post('/create', [O::class, 'store'])->name('store')->middleware('gate:user');
+    Route::delete('/delete/{order}', [O::class, 'destroy'])->name('delete')->middleware('gate:admin');
+    Route::get('/edit/{order}', [O::class, 'edit'])->name('edit')->middleware('gate:admin');
+    Route::put('/edit/{orders}', [O::class, 'update'])->name('update')->middleware('gate:admin');
 });

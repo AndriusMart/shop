@@ -30,9 +30,7 @@
         const breakdownUrl = "{{route('i_index')}}";
     </script>
     <!-- Scripts -->
-    <script>
-        const breakdownUrl = "{{route('i_index')}}";
-    </script>
+
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     {{-- <script src="{{asset('admin/vendors/base/vendor.bundle.base.js')}}"></script> --}}
     <script src="{{asset('admin/vendors/datatables.net/jquery.dataTables.js')}}"></script>
