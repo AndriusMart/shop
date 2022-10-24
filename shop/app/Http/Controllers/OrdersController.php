@@ -15,6 +15,8 @@ class OrdersController extends Controller
     public function index()
     {
 
+
+        // dd(Orders::orderBy('updated_at', 'desc')->get());
         return view('order.index', [
             'orders' => Orders::orderBy('updated_at', 'desc')->get(),
             'status' => Orders::STATUS 
@@ -39,10 +41,11 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
+
         Orders::create([
             'user_id' => $request->user_id,
             'status' => $request->status,
-            'item_id' => $request->item_id,
+            'item_id' => json_encode($request->session()->get('cart')),
             'total' => $request->total,
         ]);
         $request->session()->forget('cart');

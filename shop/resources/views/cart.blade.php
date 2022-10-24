@@ -46,18 +46,33 @@
             <td colspan="5" class="text-right">
                 <a href="{{route('index')}}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
                 @if(Auth::user())
+                @forelse($addresses as $address)
+                @if(Auth::user()->id == $address->getUsers->id <= 1)
                 <form action="{{route('o_store')}}" method="post" enctype="multipart/form-data">
                     <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
-                    <?php dump( session('cart') )  ?>
                     <input type="hidden" value="{{$status[1]}}" name="status">
-                    @foreach(session('cart') as $id => $details)
-                    <?php dump( $id )  ?>
-                    <input type="hidden" value="{{ $id }}" name="item_id">
-                    @endforeach
                     <input type="hidden" value="{{ $total }}" name="total">
                     @csrf
                     <button type="submit" class="btn btn-secondary mt-4">Order</button>
                </form>
+               @else
+               <div>
+                    To make an order, 
+                 you need to add your address first 
+
+
+                   <a class="btn btn-dark" href="{{ route('ua_create') }}">add</a>
+
+
+
+
+
+               </div>
+                
+               @endif
+               
+               @empty
+                @endforelse
                @else
                   <div>
                     You have to login fist to make an order

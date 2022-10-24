@@ -15,7 +15,9 @@ class Orders extends Model
         3 => 'Shipped',
         4 => 'Recived'
     ];
-
+    // protected $casts = [
+    //     'item_id' => 'array',
+    // ];
 
     protected $fillable = ['item_id', 'user_id', 'status', 'total'];
 

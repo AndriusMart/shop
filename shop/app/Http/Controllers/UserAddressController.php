@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserAddress;
-use App\Http\Requests\StoreUserAddressRequest;
-use App\Http\Requests\UpdateUserAddressRequest;
+use Illuminate\Http\Request;
+use App\Models\User;
+
 
 class UserAddressController extends Controller
 {
@@ -15,7 +16,10 @@ class UserAddressController extends Controller
      */
     public function index()
     {
-        //
+        
+        return view('address.index', [
+            'addresses' => UserAddress::orderBy('updated_at', 'desc')->get(),
+        ]);
     }
 
     /**
@@ -25,7 +29,7 @@ class UserAddressController extends Controller
      */
     public function create()
     {
-        //
+        return view('address.create');
     }
 
     /**
@@ -34,9 +38,16 @@ class UserAddressController extends Controller
      * @param  \App\Http\Requests\StoreUserAddressRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUserAddressRequest $request)
+    public function store(Request $request)
     {
-        //
+        $userAddress = new UserAddress;
+        $userAddress->user_id = $request->user_id;
+        $userAddress->address = $request->address;
+        $userAddress->city = $request->city;
+        $userAddress->postal_code = $request->postal_code;
+        $userAddress->phone = $request->phone;
+        $userAddress->save();
+        return redirect()->route('ua_index');
     }
 
     /**
@@ -58,7 +69,9 @@ class UserAddressController extends Controller
      */
     public function edit(UserAddress $userAddress)
     {
-        //
+        return view('address.edit', [
+            'userAddress' => $userAddress
+        ]);
     }
 
     /**
@@ -68,9 +81,15 @@ class UserAddressController extends Controller
      * @param  \App\Models\UserAddress  $userAddress
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserAddressRequest $request, UserAddress $userAddress)
+    public function update(Request $request, UserAddress $userAddress)
     {
-        //
+        $userAddress->update([
+            'address' => $request->address,
+            'city' => $request->city,
+            'postal_code' => $request->postal_code,
+            'phone' => $request->phone,
+    ]);
+        return redirect()->route('ua_index');
     }
 
     /**

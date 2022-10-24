@@ -8,6 +8,7 @@ use App\Http\Controllers\PageController as P;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Admin\DashboardController as A;
 use App\Http\Controllers\OrdersController as O;
+use App\Http\Controllers\UserAddressController as UA;
 
 
 /*
@@ -85,4 +86,13 @@ Route::prefix('order')->name('o_')->group(function () {
     Route::delete('/delete/{order}', [O::class, 'destroy'])->name('delete')->middleware('gate:admin');
     Route::get('/edit/{order}', [O::class, 'edit'])->name('edit')->middleware('gate:admin');
     Route::put('/edit/{orders}', [O::class, 'update'])->name('update')->middleware('gate:admin');
+});
+
+Route::prefix('address')->name('ua_')->group(function () {
+    Route::get('/', [UA::class, 'index'])->name('index')->middleware('gate:user');
+    Route::get('/create', [UA::class, 'create'])->name('create')->middleware('gate:user');
+    Route::post('/create', [UA::class, 'store'])->name('store')->middleware('gate:user');
+    Route::delete('/delete/{userAddress}', [UA::class, 'destroy'])->name('delete')->middleware('gate:admin');
+    Route::get('/edit/{userAddress}', [UA::class, 'edit'])->name('edit')->middleware('gate:user');
+    Route::put('/edit/{userAddress}', [UA::class, 'update'])->name('update')->middleware('gate:user');
 });

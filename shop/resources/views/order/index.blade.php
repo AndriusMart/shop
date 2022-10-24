@@ -18,7 +18,12 @@
                                 <div class="content">
                                     <div class="content">
                                         <h2><span>User Name: </span>{{$order->getUsers->name}}</h2>
-                                        <h4><span>Item: </span>{{$order->getItems->title}}</h4>
+                                        @foreach(json_decode($order->item_id) as  $item)
+                                        <h4><span>name: </span>{{$item->name}}</h4>
+                                        <h4><span>quant: </span>{{$item->quantity}}</h4>
+                                        <h4><span>price: </span>{{$item->price}}</h4>
+                                        @endforeach
+                                        
                                         <h4><span>Status: </span>{{$order->status}}</h4>
                                         <h4><span>Total: $</span>{{$order->total}}</h4>
 
@@ -33,7 +38,12 @@
                                 <div class="content">
                                     <div class="content">
                                         <h2><span>User Name: </span>{{$order->getUsers->name}}</h2>
-                                        <h4><span>Item: </span>{{$order->getItems->title}}</h4>
+                                        @foreach(json_decode($order->item_id) as  $item)
+                                       
+                                        <h4><span>name: </span>{{$item->name}}</h4>
+                                        <h4><span>quant: </span>{{$item->quantity}}</h4>
+                                        <h4><span>price: </span>{{$item->price}}</h4>
+                                        @endforeach
                                         <h4><span>Status: </span>{{$order->status}}</h4>
                                         <h4><span>Total: $</span>{{$order->total}}</h4>
                                     </div>

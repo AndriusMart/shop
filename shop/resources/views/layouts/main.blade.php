@@ -113,6 +113,9 @@
                 <a  class="dropdown-item" href="{{ route('o_index') }}">
                   Orders
               </a>
+              <a  class="dropdown-item" href="{{ route('ua_index') }}">
+                Info
+            </a>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf

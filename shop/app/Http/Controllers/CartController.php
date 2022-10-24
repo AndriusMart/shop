@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 use App\Models\Orders;
 use Illuminate\Http\Request;
 use App\Models\Items;
+use App\Models\UserAddress;
 
 class CartController extends Controller
 {
     public function cart()
     {
+        $userAddress = UserAddress::all();
         return view('cart', [
-            'status' => Orders::STATUS 
+            'status' => Orders::STATUS ,
+            'addresses' => $userAddress
         ]);
     }
    

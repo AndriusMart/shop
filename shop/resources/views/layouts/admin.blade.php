@@ -49,7 +49,7 @@
 
 </head>
 
-<body>
+<body style="background-color: #f3f3f3">
     <div class="container-scroller bg-main">
         @include('layouts.inc.admin.navbar')
         <div class=" page-body-wrapper bg-main">
