@@ -54,7 +54,7 @@
       </a>
       <div class="collapse" id="ui-orders">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="{{ route('i_index') }}">List</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{ route('o_list') }}">List</a></li>
         </ul>
       </div>
     </li>
@@ -74,6 +74,12 @@
         </ul>
       </div>
     </li>
+    <li class="nav-item">
+    <a class="nav-link" href="{{ route('ua_list') }}">
+      <i class="mdi mdi-account menu-icon"></i>
+      <span class="menu-title">Addresses</span>
+    </a>
+  </li>
   </ul>
 
 </nav>

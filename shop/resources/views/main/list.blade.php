@@ -7,11 +7,11 @@
 <div class="section-space-small"></div>
 <div class="items bg-foto">
   <div class="flex-shrink-0 p-3 col-3 categor">
-      <svg class="bi pe-none me-2" width="30" height="24">
-        <use xlink:href="#bootstrap"></use>
-      </svg>
-      <span class="fs-5 fw-semibold">Categories</span>
-    <ul class="list-unstyled ps-0 ">
+    <svg class="bi pe-none me-2" width="30" height="24">
+      <use xlink:href="#bootstrap"></use>
+    </svg>
+    <span class="fs-5 fw-semibold">Categories</span>
+    {{-- <ul class="list-unstyled ps-0 ">
 
 
       @forelse($categories as $category)
@@ -21,12 +21,12 @@
           data-bs-toggle="collapse" data-bs-target="#{{$category->category}}-collapse" aria-expanded="false">
           {{$category->category}}
         </button>
-        
+
         <div class="collapse" id="{{$category->category}}-collapse" style="">
           @forelse($category->subCategories as $subcategory)
-          
 
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li><a href="#"
                 class="link-dark d-inline-flex text-decoration-none rounded">{{$subcategory->sub_category}}</a>
             </li>
@@ -41,39 +41,76 @@
       <h1 class="list-group-item">No items found</h1>
       @endforelse
 
-      
-    </ul>
+
+    </ul> --}}
     <div class="container">
       <div class="row">
-          <div class="col-7">
-              <form action="{{route('list')}}" method="get">
-                  <div class="container">
-                      <div class="row">
-                          {{-- <div class="col-5">
-                              <select name="cat" class="form-select mt-1">
-                                  <option value="0">All</option>
-                                  @foreach($categories as $category)
-                                  <option value="{{$category->id}}" @if($cat==$category->id) selected @endif>{{$category->title}}</option>
-                                  @endforeach
-                              </select>
-                          </div> --}}
-
-                              <select name="sort" class="form-select">
-                                  <option value="0">All</option>
-                                  @foreach($sortSelect as $option)
-                                  <option value="{{$option[0]}}" @if($sort==$option[0]) selected @endif>{{$option[1]}}</option>
-                                  @endforeach
-                              </select>
-
-                          <div class="col-2">
-                              <button type="submit" class="input-group-text mt-1">Filter</button>
-                          </div>
-                      </div>
-                  </div>
-              </form>
-          </div>
+        <div class="col-11">
+          <form action="{{route('list')}}" method="get">
+            <div class="container">
+              <div class="row">
+                @foreach($categories as $category)
+                <option value="{{$category->id}}" @if($cat==$category->id) selected @endif>{{$category->category}}
+                </option>
+                {{-- {{dd($category->id)}} --}}
+                @endforeach
+                <div class="col-8">
+                  <select name="cat" class="form-select mt-1">
+                    <option value="0">All</option>
+                    @foreach($categories as $category)
+                    <option value="{{$category->id}}" @if($cat==$category->id) selected @endif>{{$category->category}}
+                    </option>
+                    
+                    @endforeach
+                  </select>
+                </div>
+                <div class="col-8">
+                  <select name="subCat" class="form-select mt-1">
+                    <option value="0">All</option>
+                    @foreach($subCategories as $subcategory)
+                    <option value="{{$subcategory->id}}" @if($subCat==$subcategory->id) selected
+                      @endif>{{$subcategory->sub_category}}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="col-8">
+                  <select name="sort" class="form-select mt-1">
+                    <option value="0">All</option>
+                    @foreach($sortSelect as $option)
+                    <option value="{{$option[0]}}" @if($sort==$option[0]) selected @endif>{{$option[1]}}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="col-8">
+                  <button type="submit" class="input-group-text mt-1">Filter</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
-  </div>
+    </div>
+    {{-- <div class="container">
+      <div class="row">
+        <div class="col-7">
+          <form action="{{route('list')}}" method="get">
+            <div class="container">
+              <div class="row">
+                <select name="sort" class="form-select">
+                  <option value="0">All</option>
+                  @foreach($sortSelect as $option)
+                  <option value="{{$option[0]}}" @if($sort==$option[0]) selected @endif>{{$option[1]}}</option>
+                  @endforeach
+                </select>
+                <div class="col-2">
+                  <button type="submit" class="input-group-text mt-1">Filter</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div> --}}
   </div>
   <!-- list items -->
   <div class="col-9 bg-foto">
@@ -92,12 +129,13 @@
               <h2>{{$item->price}}</h2>
             </div>
             <div class="buy-see overlay">
-                <input type="hidden" value="{{ $item->id }}" name="id">
-                <input type="hidden" value="{{ $item->title}}" name="name">
-                <input type="hidden" value="{{ $item->photo }}"  name="image">
-                <input type="hidden" value="{{$item->price}}"  name="price">
-                <input type="hidden" value="1" name="quantity">
-                <p class="btn-holder"><a href="{{ route('add.to.cart', $item->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p> 
+              <input type="hidden" value="{{ $item->id }}" name="id">
+              <input type="hidden" value="{{ $item->title}}" name="name">
+              <input type="hidden" value="{{ $item->photo }}" name="image">
+              <input type="hidden" value="{{$item->price}}" name="price">
+              <input type="hidden" value="1" name="quantity">
+              <p class="btn-holder"><a href="{{ route('add.to.cart', $item->id) }}"
+                  class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
             </div>
           </div>
 
@@ -109,7 +147,7 @@
 
     </div>
     <div class="me-3 mx-3">
-      {{ $items->links() }}
+      {{-- {{ $items->links() }} --}}
     </div>
   </div>
 </div>

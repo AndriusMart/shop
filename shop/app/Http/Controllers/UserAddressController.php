@@ -22,6 +22,14 @@ class UserAddressController extends Controller
         ]);
     }
 
+    public function list()
+    {
+        
+        return view('address.list', [
+            'addresses' => UserAddress::orderBy('updated_at', 'desc')->get(),
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -100,6 +108,7 @@ class UserAddressController extends Controller
      */
     public function destroy(UserAddress $userAddress)
     {
-        //
+        $userAddress->delete();
+        return redirect()->route('ua_list')->with('ok', 'Order deleted');
     }
 }

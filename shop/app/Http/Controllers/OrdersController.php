@@ -23,6 +23,17 @@ class OrdersController extends Controller
         ]);
     }
 
+    public function list()
+    {
+
+
+        // dd(Orders::orderBy('updated_at', 'desc')->get());
+        return view('order.list', [
+            'orders' => Orders::orderBy('updated_at', 'desc')->get(),
+            'status' => Orders::STATUS 
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -52,6 +63,8 @@ class OrdersController extends Controller
         
         return redirect()->route('o_index');
     }
+
+    
 
     /**
      * Display the specified resource.

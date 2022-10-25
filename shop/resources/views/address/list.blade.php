@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.admin')
 @section('content')
 <div class="container --content">
     <div class="row justify-content-center">
@@ -10,7 +10,6 @@
                 <div class="card-body">
                     <ul class="list-group">
                         @forelse($addresses as $address)
-                        @if(Auth::user()->name == $address->getUsers->name)
                         <li class="list-group-item">
                             
                             <div class="items-list">
@@ -27,24 +26,16 @@
                                 <div class="buttons">
                                     {{-- <a href="{{route('c_show', $category)}}" class="btn btn-info">Show</a> --}}
                                     <a href="{{route('ua_edit', $address)}}" class="btn btn-success">Edit</a>
-                                    {{-- <form action="{{route('c_delete', $category)}}" method="post">
+                                    <form action="{{route('ua_delete', $address)}}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form> --}}
+                                    </form>
                                 </div>
                             </div>
                         </li>
-                        @if(!Auth::user()->getAddress->first())
-                        <div>
-                            <li class="list-group-item">You need to  : <a class="btn btn-dark" href="{{ route('ua_create') }}">add address</a></li>
-                        </div>
-                        @endif
-
-                        @endif
-
                         @empty
-                        <li class="list-group-item">No categories found</li>
+                        <li class="list-group-item">No addresses found</li>
                         @endforelse
                     </ul>
 

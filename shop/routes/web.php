@@ -82,6 +82,7 @@ Route::prefix('admin')->name('a_')->group(function () {
 
 Route::prefix('order')->name('o_')->group(function () {
     Route::get('/', [O::class, 'index'])->name('index')->middleware('gate:user');
+    Route::get('/list', [O::class, 'list'])->name('list')->middleware('gate:admin');
     Route::post('/create', [O::class, 'store'])->name('store')->middleware('gate:user');
     Route::delete('/delete/{order}', [O::class, 'destroy'])->name('delete')->middleware('gate:admin');
     Route::get('/edit/{order}', [O::class, 'edit'])->name('edit')->middleware('gate:admin');
@@ -90,6 +91,7 @@ Route::prefix('order')->name('o_')->group(function () {
 
 Route::prefix('address')->name('ua_')->group(function () {
     Route::get('/', [UA::class, 'index'])->name('index')->middleware('gate:user');
+    Route::get('/list', [UA::class, 'list'])->name('list')->middleware('gate:admin');
     Route::get('/create', [UA::class, 'create'])->name('create')->middleware('gate:user');
     Route::post('/create', [UA::class, 'store'])->name('store')->middleware('gate:user');
     Route::delete('/delete/{userAddress}', [UA::class, 'destroy'])->name('delete')->middleware('gate:admin');
