@@ -355,9 +355,6 @@ body {
     opacity: 1;
   }
 
-.card:hover{
-    background-color:#b491a9 ;
-}
 .overlay {
     position: absolute;
     top: 0;
@@ -581,6 +578,26 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
+}
+@media (max-width: 900px) {
+    .list-items{
+        display: grid;
+        grid-template-columns: 1fr  1fr;
+        gap: 10px;
+    }
+    
+
+}
+@media (max-width: 620px) {
+
+    .list-items{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    
+
 }
 .cat-list{
     margin-left: 20px;
@@ -875,9 +892,7 @@ textarea.form-control{
         }
     }
 }
-.card:hover {
-    background-color: transparent;
-  }
+
 
 
 
@@ -1036,3 +1051,8 @@ button.btn.btn-info {
         .order-list-border{
             border: 1px black dotted;
         }
+
+        .filter{
+            height: 100%;
+        }
+    

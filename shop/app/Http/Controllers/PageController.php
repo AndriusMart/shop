@@ -38,19 +38,18 @@ class PageController extends Controller
                 $items = $items->orderBy('price', 'desc');
             }
         }
+        
 
         if ($request->s) {
             $items = $items->where('title', 'like', '%' . $request->s . '%');
-        } else {
-            $items = Items::where('id', '>', '0');
         }
-        
+         
 
 
 
 
         return view('main.list', [
-            'items' => $items->paginate(12)->withQueryString(),
+            'items' => $items->paginate(11)->withQueryString(),
             'subCategories' => SubCategory::orderBy('sub_category', 'asc')->get(),
             'categories' => Category::orderBy('category', 'asc')->get(),
             'cat' => $request->cat ?? '0',

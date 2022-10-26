@@ -1,12 +1,13 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="container --content">
+<div class="section-space"></div>
+<div class="container">
     <div class="row justify-content-center">
-        <div class="col-9">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h2>Orders</h2>
+                    <h2> My Orders</h2>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
@@ -41,4 +42,5 @@
         </div>
     </div>
 </div>
+<div class="section-space"></div>
 @endsection

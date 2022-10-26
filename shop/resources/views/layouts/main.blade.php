@@ -64,6 +64,7 @@
                 aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ $totals }}</span></a>
           </div>
           @endif
+        </div>
 
 
         <ul class="navbar-nav ms-auto">
@@ -118,13 +119,12 @@
           @endguest
         </ul>
       </div>
-      </div>
   </div>
 
   </nav>
 
   </div>
-  <div>
+  <div class="bg-foto">
 
     @if(session('success'))
     <div class="alert alert-success">
@@ -133,6 +133,7 @@
     @endif
 
     @yield('content')
+    @include('layouts.footer')
   </div>
 
   @yield('scripts')

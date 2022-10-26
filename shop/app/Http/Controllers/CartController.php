@@ -10,8 +10,10 @@ class CartController extends Controller
 {
     public function cart()
     {
+        $items = Items::all();
         $userAddress = UserAddress::all();
         return view('cart', [
+            'items' => $items,
             'status' => Orders::STATUS ,
             'addresses' => $userAddress
         ]);

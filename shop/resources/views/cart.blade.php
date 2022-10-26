@@ -13,6 +13,11 @@
         </tr>
     </thead>
     <tbody>
+        @if(!session('cart'))
+        <div>
+            Your cart is empty
+        </div>
+        @endif
         @php $total = 0 @endphp
         @if(session('cart'))
         @foreach(session('cart') as $id => $details)
@@ -23,7 +28,7 @@
                     <div class="col-sm-3 hidden-xs"><img src="{{ $details['image'] }}" width="100" height="100"
                             class="img-responsive" /></div>
                     <div class="col-sm-9">
-                        <h4 class="nomargin">{{ $details['name'] }}</h4>
+                        <a href="{{route('show', $id)}}"><h4 class="nomargin">{{ $details['name'] }}</h4></a>
                     </div>
                 </div>
             </td>
