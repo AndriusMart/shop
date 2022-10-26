@@ -7,45 +7,6 @@
             <div class="card">
                 <div class="card-header">
                     <h2>Item</h2>
-                    {{-- <form action="{{route('i_index')}}" method="get">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-5">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-10">
-                                                <select name="mech" class="form-select mt-1">
-                                                    <option value="0">All</option>
-                                                    @foreach($mechanics as $mechanic)
-                                                    <option value="{{$mechanic->id}}" @if($mech==$mechanic->id) selected @endif>{{$mechanic->name}} {{$mechanic->surname}} [{{$mechanic->getTrucks()->count()}}]</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="col-6">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-7">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-8">
-                                                <div class="input-group mb-3">
-                                                    
-                                                    <input type="text" name="s" class="form-control" value="{{$s}}">
-                                                <button type="submit" class="input-group-text">Search</button>
-                                                </div>
-                                            </div>
-                                            <div class="col-2">
-                                                <a href="{{route('t_index')}}" class="btn btn-secondary">Reset</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form> --}}
                 </div>
                 <div class="card-body">
                     <ul class="list-group">

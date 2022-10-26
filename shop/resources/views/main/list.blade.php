@@ -3,7 +3,20 @@
 @section('content')
 <!-- nav-side -->
 <div class="section-space"></div>
-<div> asdas</div>
+<div class="col-7">
+  <div class="container">
+    <div class="row">
+      <div class="col-8">
+        <form action="{{route('list')}}" method="get">
+        <div class="input-group mb-3">
+          <input type="text" name="s" class="form-control" value="{{$s}}">
+          <button type="submit" class="input-group-text">Search</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="section-space-small"></div>
 <div class="items bg-foto">
   <div class="flex-shrink-0 p-3 col-3 categor">
@@ -11,38 +24,6 @@
       <use xlink:href="#bootstrap"></use>
     </svg>
     <span class="fs-5 fw-semibold">Categories</span>
-    {{-- <ul class="list-unstyled ps-0 ">
-
-
-      @forelse($categories as $category)
-      <li class="cat-list">
-
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-          data-bs-toggle="collapse" data-bs-target="#{{$category->category}}-collapse" aria-expanded="false">
-          {{$category->category}}
-        </button>
-
-        <div class="collapse" id="{{$category->category}}-collapse" style="">
-          @forelse($category->subCategories as $subcategory)
-
-
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#"
-                class="link-dark d-inline-flex text-decoration-none rounded">{{$subcategory->sub_category}}</a>
-            </li>
-          </ul>
-          @empty
-          <h1 class="list-group-item">No items found</h1>
-          @endforelse
-        </div>
-
-      </li>
-      @empty
-      <h1 class="list-group-item">No items found</h1>
-      @endforelse
-
-
-    </ul> --}}
     <div class="container">
       <div class="row">
         <div class="col-11">
@@ -52,7 +33,6 @@
                 @foreach($categories as $category)
                 <option value="{{$category->id}}" @if($cat==$category->id) selected @endif>{{$category->category}}
                 </option>
-                {{-- {{dd($category->id)}} --}}
                 @endforeach
                 <div class="col-8">
                   <select name="cat" class="form-select mt-1">
@@ -60,7 +40,7 @@
                     @foreach($categories as $category)
                     <option value="{{$category->id}}" @if($cat==$category->id) selected @endif>{{$category->category}}
                     </option>
-                    
+
                     @endforeach
                   </select>
                 </div>
@@ -90,27 +70,6 @@
         </div>
       </div>
     </div>
-    {{-- <div class="container">
-      <div class="row">
-        <div class="col-7">
-          <form action="{{route('list')}}" method="get">
-            <div class="container">
-              <div class="row">
-                <select name="sort" class="form-select">
-                  <option value="0">All</option>
-                  @foreach($sortSelect as $option)
-                  <option value="{{$option[0]}}" @if($sort==$option[0]) selected @endif>{{$option[1]}}</option>
-                  @endforeach
-                </select>
-                <div class="col-2">
-                  <button type="submit" class="input-group-text mt-1">Filter</button>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div> --}}
   </div>
   <!-- list items -->
   <div class="col-9 bg-foto">
@@ -147,7 +106,7 @@
 
     </div>
     <div class="me-3 mx-3">
-      {{-- {{ $items->links() }} --}}
+      {{ $items->links() }}
     </div>
   </div>
 </div>

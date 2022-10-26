@@ -37,7 +37,6 @@
             </td>
         </tr>
         @endforeach
-
     </tbody>
     <tfoot>
         <tr>
@@ -45,61 +44,44 @@
                 <h3><strong>Total ${{ $total }}</strong></h3>
             </td>
         </tr>
-        
         <tr>
-            {{-- {{dd(Auth::user()->getAddress->first()) == null}} --}}
             <td colspan="5" class="text-right">
-                @if(!Auth::user()->getAddress->first())
-                    <div>
-                        To make an order,
-                        you need to add your address first
-                        <a class="btn btn-dark" href="{{ route('ua_create') }}">add</a>
-                    </div>
-                    @endif
+                @endif
                 <a href="{{route('index')}}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue
                     Shopping</a>
                 @if(Auth::user())
-                @forelse($addresses as $address)
-                {{-- {{dd($address->getUsers)}} --}}
-                @if(Auth::user()->id == $address->getUsers->id) <form action="{{route('o_store')}}" method="post"
-                    enctype="multipart/form-data">
+                @if(Auth::user()->id == $addresses->first()->getUsers->id) <form action="{{route('o_store')}}"
+                    method="post" enctype="multipart/form-data">
                     <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
                     <input type="hidden" value="{{$status[1]}}" name="status">
                     <input type="hidden" value="{{ $total }}" name="total">
                     @csrf
                     <button type="submit" class="btn btn-secondary mt-4">Order</button>
-                    </form>
-                    @endif
-                    @empty
-                    @endforelse
-                    @else
-                    <div>
-                        You have to login fist to make an order
-
-
-                        <a class="btn btn-dark" href="{{ route('login') }}">{{ __('Login') }}</a>
-
-
-
-                        <a class="btn btn-dark" href="{{ route('register') }}">{{ __('Register') }}</a>
-
-
-                    </div>
-                    @endif
+                </form>
+                @elseif(!Auth::user()->getAddress->first())
+                <div>
+                    To make an order,
+                    you need to add your address first
+                    <a class="btn btn-dark" href="{{ route('ua_create') }}">add</a>
+                </div>
+                @endif
+                @else
+                <div>
+                    You have to login fist to make an order
+                    <a class="btn btn-dark" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    <a class="btn btn-dark" href="{{ route('register') }}">{{ __('Register') }}</a>
+                </div>
+                @endif
             </td>
         </tr>
     </tfoot>
-    @endif
 </table>
 @endsection
-
 @section('scripts')
 <script type="text/javascript">
     $(".update-cart").change(function (e) {
         e.preventDefault();
-   
         var ele = $(this);
-   
         $.ajax({
             url: '{{ route('update.cart') }}',
             method: "patch",

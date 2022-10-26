@@ -25,13 +25,7 @@
                                     <h2>{{$address->postal_code}}</h2>
                                 </div>
                                 <div class="buttons">
-                                    {{-- <a href="{{route('c_show', $category)}}" class="btn btn-info">Show</a> --}}
                                     <a href="{{route('ua_edit', $address)}}" class="btn btn-success">Edit</a>
-                                    {{-- <form action="{{route('c_delete', $category)}}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form> --}}
                                 </div>
                             </div>
                         </li>

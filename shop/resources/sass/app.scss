@@ -413,10 +413,7 @@ body {
     color: rgb(71, 71, 71);
     font-size: 20px;
 }
-.carousel-border{
 
-    
-}
 .carousel-control-next-icon{
     background-color: black ;
 }
@@ -1030,4 +1027,12 @@ button.btn.btn-info {
         #wrapper.toggled #sidebar-wrapper {
             margin-left: -15rem;
         }
+        }
+
+        .order-list{
+            display: flex;
+            gap: 20px;
+        }
+        .order-list-border{
+            border: 1px black dotted;
         }

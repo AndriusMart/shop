@@ -118,6 +118,6 @@ class OrdersController extends Controller
     public function destroy(Orders $order)
     {
         $order->delete();
-        return redirect()->route('o_index')->with('ok', 'Order deleted');
+        return redirect()->route('o_list')->with('ok', 'Order deleted');
     }
 }

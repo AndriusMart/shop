@@ -24,7 +24,7 @@
 
   <script>
     const breakdownUrl = "{{route('i_index')}}";
-</script>
+  </script>
 
   @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -50,29 +50,22 @@
               <a class="nav-link active" href="{{route('list')}}">All items</a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-dark" type="submit">Search</button>
-          </form>
- <div class="header-icons">
-          @if(session('cart') == null)
-          <a href="{{ route('cart') }}" class="btn btn-primary btn-block"><i class="fa fa-shopping-cart"
-              aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">0</span></a>
-          <a href="#"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>
-          @else
-          @php $totals = 0 @endphp
-          @foreach(session('cart') as $id => $details)
-          @php $totals += $details['quantity'];
-          @endphp
-          @endforeach
-          <a href="{{ route('cart') }}" class="btn btn-primary btn-block"><i class="fa fa-shopping-cart"
-              aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ $totals }}</span></a>
-          <a href="#"><i class="fa fa-question-circle-o" aria-hidden="true"></i></a>
-        </div>
-        @endif
-        </div>
+          <div class="header-icons">
+            @if(session('cart') == null)
+            <a href="{{ route('cart') }}" class="btn btn-primary btn-block"><i class="fa fa-shopping-cart"
+                aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">0</span></a>
+            @else
+            @php $totals = 0 @endphp
+            @foreach(session('cart') as $id => $details)
+            @php $totals += $details['quantity'];
+            @endphp
+            @endforeach
+            <a href="{{ route('cart') }}" class="btn btn-primary btn-block"><i class="fa fa-shopping-cart"
+                aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ $totals }}</span></a>
+          </div>
+          @endif
 
-       
+
         <ul class="navbar-nav ms-auto">
 
           <!-- Authentication Links -->
@@ -93,37 +86,38 @@
 
           <a class="nav-link" href="{{ route('a_index') }}">
             Admin Dashboard
-        </a>
+          </a>
 
 
 
           @endif
 
           <li class="nav-item dropdown">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                {{ Auth::user()->name }}
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false" v-pre>
+              {{ Auth::user()->name }}
             </a>
 
             <div class="dropdown-menu dropdown-menu-end col-2" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
+              <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
-                <a  class="dropdown-item" href="{{ route('o_index') }}">
-                  Orders
+                {{ __('Logout') }}
               </a>
-              <a  class="dropdown-item" href="{{ route('ua_index') }}">
+              <a class="dropdown-item" href="{{ route('o_index') }}">
+                Orders
+              </a>
+              <a class="dropdown-item" href="{{ route('ua_index') }}">
                 Info
-            </a>
+              </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+              </form>
             </div>
-        </li>
+          </li>
           @endguest
         </ul>
+      </div>
       </div>
   </div>
 

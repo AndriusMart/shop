@@ -39,6 +39,13 @@ class PageController extends Controller
             }
         }
 
+        if ($request->s) {
+            $items = $items->where('title', 'like', '%' . $request->s . '%');
+        } else {
+            $items = Items::where('id', '>', '0');
+        }
+        
+
 
 
 
@@ -50,6 +57,7 @@ class PageController extends Controller
             'subCat' => $request->subCat ?? '0',
             'sort' => $request->sort ?? '0',
             'sortSelect' => Items::SORT_SELECT,
+            's' => $request->s ?? ''
         ]);
     }
 
