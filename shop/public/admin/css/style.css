@@ -14749,6 +14749,15 @@ fieldset:disabled .btn {
   clear: both;
   content: "";
 }
+.carousel-items {
+  position: relative;
+  display: none;
+  float: left;
+  width: 100%;
+  margin-right: -100%;
+  backface-visibility: hidden;
+  transition: transform 0.6s ease-in-out;
+}
 
 .carousel-item {
   position: relative;
@@ -14762,6 +14771,9 @@ fieldset:disabled .btn {
 
 @media (prefers-reduced-motion: reduce) {
   .carousel-item {
+    transition: none;
+  }
+  .carousel-items {
     transition: none;
   }
 }

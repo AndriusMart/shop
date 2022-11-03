@@ -297,45 +297,65 @@ body {
 /* new-info */
 /* carusel */
 
-  @media (max-width: 770px) {
-    .carousel-inner .carousel-item > div {
-        display: none;
+.carousel-inner {
+    padding: 1em;
+  }
+  .card {
+    margin: 0 0.5em;
+    border: none;
+  }
+  .carousel-control-prev,
+  .carousel-control-next {
+    background-color: #e1e1e1;
+    width: 6vh;
+    height: 6vh;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  @media (min-width: 768px) {
+    .carousel-item {
+      margin-right: 0;
+      flex: 0 0 25%;
+      display: block;
     }
-    .carousel-inner .carousel-item > div:first-child {
-        display: block;
+    .carousel-inner {
+      display: flex;
     }
-}
+  }
 
-.carousel-inner .carousel-item.active,
-.carousel-inner .carousel-item-next,
-.carousel-inner .carousel-item-prev {
-    display: flex;
-}
+  @media (max-width: 270px) {
+    .carousel-control-prev{
 
-/* medium and up screens */
-@media (min-width: 768px) {
-    
-    .carousel-inner .carousel-item-end.active,
-    .carousel-inner .carousel-item-next {
-      transform: translateX(25%);
+      left: 10%;
+      top: 115%;
+      transform: translateY(-107%);
     }
-    
-    .carousel-inner .carousel-item-start.active, 
-    .carousel-inner .carousel-item-prev {
-      transform: translateX(-25%);
+    .carousel-control-next {
+
+        right: 10%;
+        top: 115%;
+        transform: translateY(-107%);
+      }
+      .carousel-inner {
+        padding: 0;
+      }
+  }
+  .card .img-wrapper {
+      max-width: 100%;
+      height: 13em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .card img {
+      max-height: 100%;
+  }
+  @media (max-width: 767px) {
+    .card .img-wrapper {
+      height: 17em;
     }
-}
-
-.carousel-inner .carousel-item-end,
-.carousel-inner .carousel-item-start { 
-  transform: translateX(0);
-}
-
-.carousel-padding{
-    padding: 40px 0;
-}
-
-
+  }
 
 
 
@@ -396,6 +416,11 @@ body {
 .buy-see>a:hover{
     background-color: #F3D3C8;
 }
+.carusel-tag {
+    align-items: center;
+    text-align: center;
+
+}
 .carusel-tag > p{
     color: gray;
     margin: 0;
@@ -431,6 +456,7 @@ body {
     }
     .carousel{
         padding: 0 15px;
+        display: flex;
     }
     .carusel-tag > p{
         color: gray;
@@ -820,6 +846,70 @@ textarea.form-control{
         height: 150px;
     }
 }
+.show-img{
+    width: auto;
+    height: 600px;
+}
+.show{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.show-info{
+    .line{
+        margin: 15px 0;
+        font-weight: 700;
+        flex-wrap: wrap;
+        h5{
+            font-size: 25px;
+            font-weight: 500;
+        }
+    }
+
+}
+
+@media (max-width: 768px) {
+    .show-img{
+        width: auto;
+        height: 400px;
+    }
+
+}
+@media (max-width: 520px) {
+    .show-img{
+        width: auto;
+        height: 200px;
+    }
+
+}
+@media (max-width: 400px) {
+    .show{
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+@media (max-width: 230px) {
+    .show-img{
+        width: auto;
+        height: 145px;
+    }
+    .card {
+        margin: 0;
+      }
+      .show-info{
+        .line{
+            margin: 5px 0;
+            font-weight: 500;
+            flex-wrap: wrap;
+            h5{
+                font-size: 15px;
+                font-weight: 300;
+            }
+        }
+    
+    }
+}
 
 .breakdowns-list {
     display: flex;
@@ -1055,4 +1145,21 @@ button.btn.btn-info {
         .filter{
             height: 100%;
         }
+    /////asdasdasghdgjasgdhgashkgdhasgjdgasgjhdg
+    .carousel-indicators{		
+        top:105%;		
+    }
+            
+    .carousel-indicators li{
+        background-color:red;
+    }
+    .carousel-control-prev-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='red' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+    }
     
+    .carousel-control-next-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='red' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+    }
+    section{
+        padding:100px 0px;
+    }

@@ -19,6 +19,9 @@ return new class extends Migration
             $table->text('about')->nullable();
             $table->unsignedDecimal('price', 10, 2);
             $table->string('photo', 255)->nullable();
+            $table->decimal('rating',4, 2)->nullable();
+            $table->unsignedBigInteger('rating_sum')->default(0);
+            $table->unsignedBigInteger('rating_count')->default(0);
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->unsignedBigInteger('sub_category_id');

@@ -66,7 +66,7 @@ Route::get('/', [P::class, 'index'])->name('index');
 Route::get('/list', [P::class, 'list'])->name('list');
 Route::get('/show/{items}', [P::class, 'show'])->name('show');
 Route::post('/create', [P::class, 'store'])->name('store');
-Route::get('/show/{items}', [P::class, 'show'])->name('show');
+Route::put('/rate/{items}', [P::class, 'rate'])->name('rate')->middleware('gate:user');
 
 
 

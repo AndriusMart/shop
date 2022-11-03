@@ -30,8 +30,8 @@
 </head>
 
 <body>
-  <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-light bg-header sticky-top">
+  <div id="app" class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-header">
       <div class="container-fluid">
         <a class="navbar-brand" href="{{route('index')}}">
           <img src="../public/item/bg.jpeg" alt="Logo" width="30" class="d-inline-block align-text-top" />
@@ -119,7 +119,7 @@
           @endguest
         </ul>
       </div>
-  </div>
+
 
   </nav>
 

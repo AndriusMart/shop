@@ -17,6 +17,7 @@
                                     <h2><span>category: </span>{{$item->getCategory->category}}</h2>
                                     <h4><span>sub_category: </span>{{$item->getSubCategory->sub_category}}</h4>
                                     <h4><span>title: </span>{{$item->title}}</h4>
+                                    <h4><span>rating: </span>{{$item->rating ?? 'X'}}</h4>
                                     @if($item->photo)
                                     <h5><a href="{{$item->photo}}" target="_BLANK">Photo</a></h5>
                                     @endif

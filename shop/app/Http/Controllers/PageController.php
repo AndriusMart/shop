@@ -11,13 +11,15 @@ class PageController extends Controller
 {
     public function index()
     {
-        $items = Items::orderBy('created_at', 'asc')->paginate(8)->withQueryString();
+        $items = Items::orderBy('created_at', 'asc')->paginate(6)->withQueryString();
+        $rated = Items::orderBy('rating', 'desc')->paginate(8)->withQueryString();
         $subCategories = SubCategory::all();
         $categories = Category::all();
         return view('main.index', [
             'items' => $items,
             'subCategories' => $subCategories,
             'categories' => $categories,
+            'rated' => $rated
         ]);
     }
 
@@ -63,5 +65,14 @@ class PageController extends Controller
     public function show(Items $items)
     {
         return view('main.show', ['items' => $items]);
+    }
+
+    public function rate(Request $request, Items $items)
+    {
+        $items->rating_sum = $items->rating_sum + $request->rate;
+        $items->rating_count ++;
+        $items->rating = $items->rating_sum /$items->rating_count;
+        $items->save();
+        return redirect()->back();
     }
 }
