@@ -1,5 +1,5 @@
   <!-- footer -->
-  <section class="footer">
+  <div class="footer">
     <div class="footer-links">
       <a href="#">Privacy policy</a>
       <a href="#">Shipping and returning</a>
@@ -39,6 +39,6 @@
       </div>
     </div>
 
-  </section>
+  </div>
   <!-- footer -->
   <a class="fa fa-angle-up back-to-top" href="#"></a>
