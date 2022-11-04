@@ -20,7 +20,7 @@
                                     <div class="content">
                                         <h2><span>User Name: </span>{{$order->getUsers->name}}</h2>
                                         @foreach(json_decode($order->item_id) as  $item)
-                                        <h4><span>name: </span>{{$item->name}}</h4>
+                                        <h4><span>title: </span>{{$item->name}}</h4>
                                         <h4><span>quant: </span>{{$item->quantity}}</h4>
                                         <h4><span>price: </span>{{$item->price}}</h4>
                                         @endforeach
@@ -41,6 +41,10 @@
             </div>
         </div>
     </div>
+</div>
+<div class="section-space"></div>
+<div class="buttons">
+<a href="{{route('list')}}" class="pulse now">Shop now.</a>
 </div>
 <div class="section-space"></div>
 @endsection

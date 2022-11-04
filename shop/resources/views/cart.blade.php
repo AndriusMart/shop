@@ -2,33 +2,43 @@
 
 
 @section('content')
-<table id="cart" class="table table-hover table-condensed">
-    <thead>
-        <tr>
-            <th style="width:50%">Product</th>
-            <th style="width:10%">Price</th>
-            <th style="width:8%">Quantity</th>
-            <th style="width:22%" class="text-center">Subtotal</th>
-            <th style="width:10%"></th>
-        </tr>
-    </thead>
+<div class="section-space"></div>
+<div class="section-space-small"></div>
+<table id="cart" class="table table-hover table-condensed bg">
     <tbody>
         @if(!session('cart'))
-        <div>
-            Your cart is empty
-        </div>
+        <section class="hero new">
+            <div class="new-info ">
+                <h2>Your cart is empty!</h2>
+                <h4>You need to add items to your cart to place an order</h4>
+                <a href="{{'list'}}"><i class="fa fa-arrow-right" aria-hidden="true"></i>Go shopping<i
+                        class="fa fa-arrow-left" aria-hidden="true"></i></a>
+            </div>
+
+        </section>
         @endif
         @php $total = 0 @endphp
         @if(session('cart'))
+        <thead>
+            <tr>
+                <th style="width:50%">Product</th>
+                <th style="width:10%">Price</th>
+                <th style="width:8%">Quantity</th>
+                <th style="width:22%" class="text-center">Subtotal</th>
+                <th style="width:10%"></th>
+            </tr>
+        </thead>
         @foreach(session('cart') as $id => $details)
         @php $total += $details['price'] * $details['quantity'] @endphp
         <tr data-id="{{ $id }}">
             <td data-th="Product">
                 <div class="row">
-                    <div class="col-sm-3 hidden-xs"><img src="{{ $details['image'] }}" width="100" height="100"
-                            class="img-responsive" /></div>
+                    <div class="col-sm-3 hidden-xs"><img src="{{ $details['image'] ?? asset('item/nophoto.jpg')}}"
+                            width="100" height="100" class="img-responsive" /></div>
                     <div class="col-sm-9">
-                        <a href="{{route('show', $id)}}"><h4 class="nomargin">{{ $details['name'] }}</h4></a>
+                        <a href="{{route('show', $id)}}">
+                            <h4 class="nomargin">{{ $details['name'] }}</h4>
+                        </a>
                     </div>
                 </div>
             </td>
@@ -52,11 +62,13 @@
         <tr>
             <td colspan="5" class="text-right">
                 @endif
+                @if(session('cart'))
                 <a href="{{route('index')}}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue
                     Shopping</a>
                 @if(Auth::user())
-                @if(Auth::user()->id == $addresses->first()->getUsers->id) <form action="{{route('o_store')}}"
-                    method="post" enctype="multipart/form-data">
+                {{-- {{dd(!Auth::user()->getAddress->first())}} --}}
+                @if(Auth::user()->getAddress->first()) <form action="{{route('o_store')}}" method="post"
+                    enctype="multipart/form-data">
                     <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
                     <input type="hidden" value="{{$status[1]}}" name="status">
                     <input type="hidden" value="{{ $total }}" name="total">
@@ -77,11 +89,19 @@
                     <a class="btn btn-dark" href="{{ route('register') }}">{{ __('Register') }}</a>
                 </div>
                 @endif
+                @endif
+
             </td>
         </tr>
     </tfoot>
 </table>
+<div class="section-space"></div>
 @endsection
+
+
+
+
+
 @section('scripts')
 <script type="text/javascript">
     $(".update-cart").change(function (e) {

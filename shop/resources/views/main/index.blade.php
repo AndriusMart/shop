@@ -8,7 +8,7 @@
     <div>
       <h2 class="hero-wellcome">WELLCOME TO</h2>
       <h1 class="hero-title">E-SHOP</h1>
-      <a class="shop-now">Shop now.</a>
+      <a href="{{route('list')}}" class="shop-now">Shop now.</a>
     </div>
   </section>
   <div class="hero-low" id="services_block"></div>
@@ -82,7 +82,7 @@
               @endif
               <div class="carusel-tag ">
                 <h3>{{$rate->title}}</h3>
-                <h3>{{$rate->rating ?? 'X'}} </h3>
+                <h3>{{$rate->rating ?? 'X'}} <i class="fa fa-star"></i></h3>
                 <p>{{$rate->getCategory->category}}</p>
                 <p>{{$rate->getSubCategory->sub_category}}</p>
 

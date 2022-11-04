@@ -3,9 +3,9 @@
     <div class="footer-links">
       <a href="#">Privacy policy</a>
       <a href="#">Shipping and returning</a>
-      <a href="#">Shop</a>
-      <a href="#">Woman</a>
-      <a href="#">Man</a>
+      <a href="{{'list'}}">Shop</a>
+      <a href="{{'list?cat=1&subCat=0&sort=title_asc&per_page=11'}}">Woman</a>
+      <a href="{{'list?cat=2&subCat=0&sort=title_asc&per_page=11'}}">Man</a>
     </div>
     <div class="footer-info">
       <div class="footer-info-each">

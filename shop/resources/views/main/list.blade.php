@@ -41,13 +41,20 @@
                       </select>
                     </div>
                     <div class="col-12">
-                      <small>Price</small>
+                      <small>Order By</small>
                       <select name="sort" class="form-select mt-1">
-                        <option value="0">All</option>
                         @foreach($sortSelect as $option)
                         <option value="{{$option[0]}}" @if($sort==$option[0]) selected @endif>{{$option[1]}}</option>
                         @endforeach
                       </select>
+                    </div>
+                    <div class="col-12">
+                      <small>Items per page</small>
+                      <select name="per_page" class="form-select mt-1">
+                        <option value="11" @if('11'==$perPage) selected @endif>11</option>
+                        <option value="5" @if('5'==$perPage) selected @endif>5</option>
+                        <option value="20" @if('20'==$perPage) selected @endif>20</option>
+                    </select>
                     </div>
                     <div class="col-8">
                       <button type="submit" class="input-group-text mt-1">Filter</button>
@@ -85,6 +92,7 @@
             </div>
             <div class="carusel-tag ">
               <h3>{{$item->title}}</h3>
+              <h3>{{$item->rating ?? 'X'}} <i class="fa fa-star"></i></h3>
               <p>{{$item->getCategory->category}}</p>
               <p>{{$item->getSubCategory->sub_category}}</p>
               <h2>{{$item->price}}</h2>
@@ -106,7 +114,6 @@
       @empty
       <h1 class="list-group-item">No items found</h1>
       @endforelse
-
     </div>
     <div class=" mt-3">
       {{ $items->links() }}

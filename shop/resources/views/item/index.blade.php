@@ -23,7 +23,7 @@
                                     @endif
                                 </div>
                                 <div class="buttons">
-                                    <a href="{{route('i_show', $item)}}" class="btn btn-info">Show</a>
+                                    <a href="{{route('show', $item)}}" class="btn btn-info">Show</a>
                                     <a href="{{route('i_edit', $item)}}" class="btn btn-success">Edit</a>
                                     <form action="{{route('i_delete', $item)}}" method="post">
                                         @csrf

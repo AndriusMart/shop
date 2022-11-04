@@ -34,7 +34,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-header">
       <div class="container-fluid">
         <a class="navbar-brand" href="{{route('index')}}">
-          <img src="../public/item/bg.jpeg" alt="Logo" width="30" class="d-inline-block align-text-top" />
+          <img src="<?= asset('item/bg.jpeg') ?>" alt="Logo" width="30" class="d-inline-block align-text-top" />
           E-shop
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -50,80 +50,96 @@
               <a class="nav-link active" href="{{route('list')}}">All items</a>
             </li>
           </ul>
+          <ul class="navbar-nav ms-auto">
           <div class="header-icons">
             @if(session('cart') == null)
-            <a href="{{ route('cart') }}" class="btn btn-primary btn-block"><i class="fa fa-shopping-cart"
-                aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">0</span></a>
+            <a href="{{ route('cart') }}" class="btn btn-light btn-block"><i class="fa fa-shopping-cart"
+                aria-hidden="true"></i> Cart 0</span></a>
             @else
             @php $totals = 0 @endphp
             @foreach(session('cart') as $id => $details)
             @php $totals += $details['quantity'];
             @endphp
             @endforeach
-            <a href="{{ route('cart') }}" class="btn btn-primary btn-block"><i class="fa fa-shopping-cart"
-                aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ $totals }}</span></a>
+            <a href="{{ route('cart') }}" class="btn btn-light btn-block"><i class="fa fa-shopping-cart"
+                aria-hidden="true"></i> Cart {{ $totals }}</span></a>
+            @endif
           </div>
-          @endif
-        </div>
 
-
-        <ul class="navbar-nav ms-auto">
-
-          <!-- Authentication Links -->
-          @guest
-          @if (Route::has('login'))
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-          </li>
-
-          @endif
-          @if (Route::has('register'))
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-          </li>
-          @endif
-          @else
-          @if(Auth::user()->role >=10)
-
-          <a class="nav-link" href="{{ route('a_index') }}">
-            Admin Dashboard
-          </a>
-
-
-
-          @endif
-
-          <li class="nav-item dropdown">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false" v-pre>
-              {{ Auth::user()->name }}
+          
+            <!-- Authentication Links -->
+            @guest
+            @if (Route::has('login'))
+            <li class="nav-item mt-2">
+              <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+            </li>
+            @endif
+            @if (Route::has('register'))
+            <li class="nav-item mt-2">
+              <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+            </li>
+            @endif
+            @else
+            @if(Auth::user()->role >=10)
+            <a class="nav-link mt-2" href="{{ route('a_index') }}">
+              Admin Dashboard
             </a>
+            @endif
+            <li class="nav-item dropdown mt-2">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" v-pre>
+                {{ Auth::user()->name }}
+              </a>
 
-            <div class="dropdown-menu dropdown-menu-end col-2" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+              <div class="dropdown-menu dropdown-menu-end col-2 " aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-              </a>
-              <a class="dropdown-item" href="{{ route('o_index') }}">
-                Orders
-              </a>
-              <a class="dropdown-item" href="{{ route('ua_index') }}">
-                Info
-              </a>
+                  {{ __('Logout') }}
+                </a>
+                <a class="dropdown-item" href="{{ route('o_index') }}">
+                  Orders
+                </a>
+                <a class="dropdown-item" href="{{ route('ua_index') }}">
+                  Info
+                </a>
 
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-              </form>
-            </div>
-          </li>
-          @endguest
-        </ul>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+                </form>
+              </div>
+            </li>
+            @endguest
+          </ul>
+
+        </div>
       </div>
-
-
-  </nav>
-
+    </nav>
   </div>
+
+  @if(Session::has('ok'))
+  <div class="bg-foto">
+    <div class="row justify-content-center" style="width: 100%">
+      <div class="col-6 m-4">
+        <div class="alert alert-success">
+          {{Session::get('ok')}}
+        </div>
+      </div>
+    </div>
+  </div>
+  @endif
+
+  @if(Session::has('not'))
+  <div class="bg-foto">
+    <div class="row justify-content-center" style="width: 100%">
+      <div class="col-6 m-4">
+        <div class="alert alert-danger">
+          {{Session::get('not')}}
+        </div>
+      </div>
+    </div>
+  </div>
+  @endif
+
   <div class="bg-foto">
 
     @if(session('success'))
@@ -133,10 +149,12 @@
     @endif
 
     @yield('content')
-    @include('layouts.footer')
+
   </div>
+  <footer>
+    @include('layouts.footer')
+  </footer>
 
   @yield('scripts')
 </body>
-
 </html>
