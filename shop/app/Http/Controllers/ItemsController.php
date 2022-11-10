@@ -15,15 +15,59 @@ class ItemsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+
+
+
+    public function index(Request $request)
     {
-        $items = Items::all();
-        $subCategories = SubCategory::all();
-        $categories = Category::all();
+        $items = Items::where('id', '>', '0');
+        if ($request->subCat || $request->cat || $request->sort) {
+            if ($request->cat) {
+                $items = $items->where('category_id', 'like', '%' . $request->cat  . '%');
+            }
+            if ($request->subCat) {
+
+                $items = $items->where('sub_category_id', 'like', '%' . $request->subCat  . '%');
+            }
+            if ($request->sort == 'price_asc') {
+                $items = $items->orderBy('price', 'asc');
+            } else if ($request->sort == 'price_desc') {
+                $items = $items->orderBy('price', 'desc');
+            }
+            if ($request->sort == 'rate_asc') {
+                $items = $items->orderBy('rating', 'asc');
+            } else if ($request->sort == 'rate_desc') {
+                $items = $items->orderBy('rating', 'desc');
+            } else if ($request->sort == 'title_asc') {
+                $items = $items->orderBy('title', 'asc');
+            } else if ($request->sort == 'title_desc') {
+                $items = $items->orderBy('title', 'desc');
+            }
+        }
+        $perPage = match ($request->per_page) {
+            '12' => 12,
+            '24' => 24,
+            '50' => 50,
+            default => 24
+        };
+
+        if ($request->s) {
+            $items = $items->where('title', 'like', '%' . $request->s . '%');
+        }
+
+
+
         return view('item.index', [
-            'items' => $items,
-            'subCategories' => $subCategories,
-            'categories' => $categories,
+            'items' => $items->orderBy('title', 'asc')->paginate($perPage)->withQueryString(),
+            'subCategories' => SubCategory::orderBy('sub_category', 'asc')->get(),
+            'categories' => Category::orderBy('category', 'asc')->get(),
+            'cat' => $request->cat ?? '0',
+            'subCat' => $request->subCat ?? '0',
+            'sort' => $request->sort ?? '0',
+            'sortSelect' => Items::SORT_SELECT,
+            's' => $request->s ?? '',
+            'perPage' => $request->per_page
         ]);
     }
 
@@ -60,7 +104,7 @@ class ItemsController extends Controller
             $ext = $photo->getClientOriginalExtension();
             $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
             $file = $name . '-' . rand(100000, 999999) . '.' . $ext;
-            $photo->move(public_path().'/item', $file);
+            $photo->move(public_path() . '/item', $file);
             $items->photo = asset('/item') . '/' . $file;
         }
 
@@ -133,7 +177,7 @@ class ItemsController extends Controller
             $file = $name . '-' . rand(100000, 999999) . '.' . $ext;
             // $Image = Image::make($photo)->pixelate(12);
             // $Image->save(public_path() . '/trucks/' . $file);
-            $photo->move(public_path().'/item', $file);
+            $photo->move(public_path() . '/item', $file);
             $items->photo = asset('/item') . '/' . $file;
         }
 
@@ -166,5 +210,4 @@ class ItemsController extends Controller
             'html' => $html,
         ]);
     }
-
 }

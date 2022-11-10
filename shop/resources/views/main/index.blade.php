@@ -34,7 +34,7 @@
                 <p>{{$item->getCategory->category}}</p>
                 <p>{{$item->getSubCategory->sub_category}}</p>
 
-                <h2>{{$item->price}}</h2>
+                <h2>{{$item->price}}$</h2>
               </div>
               <div class="buy-see overlay">
                 <input type="hidden" value="{{ $item->id }}" name="id">
@@ -86,7 +86,7 @@
                 <p>{{$rate->getCategory->category}}</p>
                 <p>{{$rate->getSubCategory->sub_category}}</p>
 
-                <h2>{{$rate->price}}</h2>
+                <h2>{{$rate->price}}$</h2>
               </div>
               <div class="buy-see overlay">
                 <input type="hidden" value="{{ $rate->id }}" name="id">

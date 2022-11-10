@@ -1,11 +1,9 @@
   <!-- footer -->
   <div class="footer">
     <div class="footer-links">
-      <a href="#">Privacy policy</a>
-      <a href="#">Shipping and returning</a>
-      <a href="{{'list'}}">Shop</a>
-      <a href="{{'list?cat=1&subCat=0&sort=title_asc&per_page=11'}}">Woman</a>
-      <a href="{{'list?cat=2&subCat=0&sort=title_asc&per_page=11'}}">Man</a>
+      <a href="{{route('policy')}}">Privacy policy</a>
+      <a href="{{route('shipping')}}">Shipping policy</a>
+      <a href="{{route('list')}}">Shop</a>
     </div>
     <div class="footer-info">
       <div class="footer-info-each">

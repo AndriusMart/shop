@@ -1282,3 +1282,19 @@ code {
     align-items: center;
     justify-content: center;
 }
+
+.policy{
+    background-color: var(--bg-color);
+}
+
+
+
+@media (max-width: 768px) {
+    .filer-items{
+        display: flex;
+        flex-direction: column;
+    }
+    .filter-bars{
+        width: 200px;
+    }
+    }

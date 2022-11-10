@@ -12,6 +12,9 @@
                         <div class="header-back">
                             <h2>Item</h2>
                         </div>
+                        <div class="line">
+                            <h5>{{$items->getCategory->category}} -> {{$items->getSubCategory->sub_category}}</h5>
+                        </div>
                     </div>
                     <div class="card-body ">
                         <div class="posts-list show-bg">
@@ -19,12 +22,7 @@
                                 <div class="truck-show ">
                                     <div class="show-l ">
                                         <div class="show-info bg">
-                                        <div class="line"><span>category: </span>
-                                            <h5>{{$items->getCategory->category}}</h5>
-                                        </div>
-                                        <div class="line"><span>sub_category: </span>
-                                            <h5>{{$items->getSubCategory->sub_category}}</h5>
-                                        </div>
+
                                         <div class="line"><span>title: </span>
                                             <h5>{{$items->title}}</h5>
                                         </div>

@@ -2,7 +2,7 @@
 
   <ul class="nav">
     <li class="nav-item">
-      <a class="nav-link" href="dashboard">
+      <a class="nav-link" href="{{ route('a_index') }}">
         <i class="mdi mdi-home menu-icon"></i>
         <span class="menu-title">Dashboard</span>
       </a>
@@ -69,8 +69,8 @@
           <li class="nav-item"> <a class="nav-link" href="{{route('index')}}"> Home </a></li>
           <li class="nav-item"> <a class="nav-link" href="{{route('list')}}"> List </a></li>
           <li class="nav-item"> <a class="nav-link" href="{{ route('cart') }}"> Cart </a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html"> Register 2 </a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html"> Lockscreen </a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{ route('shipping') }}"> Shipping policy </a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{ route('policy') }}"> Privacy policy </a></li>
         </ul>
       </div>
     </li>

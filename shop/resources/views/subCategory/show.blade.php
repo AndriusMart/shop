@@ -16,10 +16,14 @@
                     <ul class="list-group">
                         @forelse($subCategory->items as $item)
                         <li class="list-group-item">
-                            <div class="movies-list">
+                            <div class="items-list">
                                 <div class="content">
+                                    <h4><span>category: </span>{{$item->getCategory->category}}</h4>
                                     <h2><span>title: </span>{{$item->title}}</h2>
-                                    <h4><span>price: </span>{{$item->price}}</h4>
+                                    <h4><span>price: </span>{{$item->price}}</h4> 
+                                </div>
+                                <div class="buttons">
+                                    <a href="{{route('show', $item->id)}}" class="btn btn-info">Show</a>
                                 </div>
                             </div>
                         </li>
@@ -27,11 +31,6 @@
                         <li class="list-group-item">No item found</li>
                         @endforelse
                     </ul>
-                    {{-- <form action="{{route('c_delete_movies', $subCategory)}}" method="post">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form> --}}
                 </div>
             </div>
         </div>

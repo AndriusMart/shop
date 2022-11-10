@@ -33,7 +33,7 @@ class PageController extends Controller
                 $items = $items->where('category_id', 'like', '%' . $request->cat  . '%');
             }
             if ($request->subCat) {
-                
+
                 $items = $items->where('sub_category_id', 'like', '%' . $request->subCat  . '%');
             }
             if ($request->sort == 'price_asc') {
@@ -41,30 +41,27 @@ class PageController extends Controller
             } else if ($request->sort == 'price_desc') {
                 $items = $items->orderBy('price', 'desc');
             }
-            if($request->sort == 'rate_asc'){
+            if ($request->sort == 'rate_asc') {
                 $items = $items->orderBy('rating', 'asc');
-            }
-            else if($request->sort == 'rate_desc'){
+            } else if ($request->sort == 'rate_desc') {
                 $items = $items->orderBy('rating', 'desc');
-            }
-            else if($request->sort == 'title_asc'){
+            } else if ($request->sort == 'title_asc') {
                 $items = $items->orderBy('title', 'asc');
-            }
-            else if($request->sort == 'title_desc'){
+            } else if ($request->sort == 'title_desc') {
                 $items = $items->orderBy('title', 'desc');
             }
         }
-        $perPage = match( $request->per_page) {
+        $perPage = match ($request->per_page) {
             '5' => 5,
             '11' => 11,
-            '20' =>20,
+            '20' => 20,
             default => 11
         };
 
         if ($request->s) {
             $items = $items->where('title', 'like', '%' . $request->s . '%');
         }
-         
+
 
 
 
@@ -82,6 +79,15 @@ class PageController extends Controller
         ]);
     }
 
+    public function shipping()
+    {
+        return view('main.shipping');
+    }
+
+    public function policy()
+    {
+        return view('main.policy');
+    }
     public function show(Items $items)
     {
         return view('main.show', ['items' => $items]);
@@ -96,8 +102,8 @@ class PageController extends Controller
         $votes[] = Auth::user()->id;
         $items->votes = json_encode($votes);
         $items->rating_sum = $items->rating_sum + $request->rate;
-        $items->rating_count ++;
-        $items->rating = $items->rating_sum /$items->rating_count;
+        $items->rating_count++;
+        $items->rating = $items->rating_sum / $items->rating_count;
         $items->save();
         return redirect()->back()->with('ok', 'Thanks for rating this item');
     }

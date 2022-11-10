@@ -11,14 +11,14 @@
                 </div>
                 <div class="card-body">
                     <div class="category">
-                        <h5>{{$category->category}}</h5>
+                        <h2>{{$category->category}}  subcategories:</h2>
                     </div>
                     <ul class="list-group">
                         @forelse($category->subCategories as $subCategory)
                         <li class="list-group-item">
                             <div class="movies-list">
                                 <div class="content">
-                                    <h2><span>SubCategory: </span>{{$subCategory->sub_category}}</h2>
+                                    <h4>{{$subCategory->sub_category}}</h4>
                                 </div>
                             </div>
                         </li>
