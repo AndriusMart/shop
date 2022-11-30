@@ -9,6 +9,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\Admin\DashboardController as A;
 use App\Http\Controllers\OrdersController as O;
 use App\Http\Controllers\UserAddressController as UA;
+use App\Http\Controllers\HomeController as H;
+
 
 
 /*
@@ -28,7 +30,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [H::class, 'index'])->name('home');
+Route::post('/moketi', [H::class, 'moketi'])->name('moketi');
+Route::post('/accept', [H::class, 'accept'])->name('accept');
+Route::post('/cancel', [H::class, 'cancel'])->name('cancel');
+Route::post('/callback', [H::class, 'callback'])->name('callback');
+
 
 
 Route::prefix('items')->name('i_')->group(function () {

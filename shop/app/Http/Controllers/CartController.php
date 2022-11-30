@@ -22,7 +22,7 @@ class CartController extends Controller
     /**
      * Write code on Method
      *
-     * @return response()
+     * @return response() 
      */
     public function addToCart($id)
     {

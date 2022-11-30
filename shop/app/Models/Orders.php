@@ -11,9 +11,11 @@ class Orders extends Model
 
     const STATUS = [
         1 => 'Created',
-        2 => 'In progress',
-        3 => 'Shipped',
-        4 => 'Recived'
+        2 => 'Payed',
+        3 => 'In progress',
+        4 => 'Shipped',
+        5 => 'Recived',
+
     ];
     // protected $casts = [
     //     'item_id' => 'array',
