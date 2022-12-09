@@ -21,6 +21,10 @@ validation, products with variants stock management.
 * How to run the program
 * Step-by-step bullets
 ```
+cd shop
+```
+
+```
 npm install
 ```
 
