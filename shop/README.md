@@ -43,5 +43,5 @@ npm run dev
 
 Contributors names and contact info
 
-ex. [Andrius Martinkėnas]((https://github.com/AndriusMart))
+ [Andrius Martinkėnas]((https://github.com/AndriusMart))
 
